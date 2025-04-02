@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body>
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/08.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC10/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+          
+            {
+  text: "Tanging panalangin ang huli niyang pag-asa. <br><br>",
+  image: "art/AC10/ACtxt1.png"
+},
+ {
+  text: "“O, Birheng Inang marilag. tanggulan ng nasa hirap, kahabagan<br> di man dapat ang aliping kapuspalad.“",
+  image: "art/AC10/ACtxt1.png"
+},
+    
+ {
+  text: "Nagdasal siya sa Mahal na Birhen upang humaba pa ang buhay at<br> iligtas ang amang may karamdaman. ",
+  image: "art/AC10/ACtxt2.png"
+},
+
+ {
+  text: "“Kung wala mang kapalaran humaba pa yaring buhay, loobin mo, <br>Inang Mahal, ang ama ko ang mabuhay.“",
+  image: "art/AC10/ACtxt2.png"
+},
+
+ {
+  text: "“Madlang hirap at parusa di ko sasapitin sana, kung <br>di po sa aking pitang magulang ko'y guminhawa.“",
+  image: "art/AC10/ACtxt2.png"
+},
+
+ {
+  text: "“Ito'y di naman pagsisisi o pagsumbat sa sarili; salamat <br>kung makabuti, ang munti kong naisilbi“",
+  image: "art/AC10/ACtxt2.png"
+},
+
+ {
+  text: "Hindi niya mapaniwalaan ang ginawa sa kanya nina <br>Don Pedro at Don Diego sapagkat para sa kanya ang karangalan nilang tatlo ay iisa.",
+  image: "art/AC10/ACtxt3.png"
+},
+
+ {
+  text: "Kaya niyang ipagkaloob ang Ibong Adarna sa dalawang kapatid <br>kung iyon ang hangad ng mga ito at hindi na siya kailangang pagtaksilan pa.",
+  image: "art/AC10/ACtxt3.png"
+},
+
+ {
+  text: "Naalala niya ang mga magulang lalo na ang kalagayan ng ama sa gitna <br>ng pagnanaknak ng kanyang mga sugat. ",
+  image: "art/AC10/ACtxt4.png"
+},
+
+{
+  text: "Naalala niya sa gitna ng paghihirap ang bayang kanyang sinilangan, <br>ang palasyong kanyang kinalakhan at<br> ang pag-aaruga ng mahal na ina na malabis na niyang pinananabikan",
+  image: "art/AC10/ACtxt5.png"
+},
+            ];
+
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "AC11.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body style="       background-color:#7a79b7;   width: 100%;
+   overflow-x: hidden;">
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/04.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC4/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const audioElement = document.getElementById('audioElement');
+          const clickSfx = document.getElementById('clickSfx');
+          const muteButton = document.getElementById('muteButton');
+          const forwardButton = document.getElementById("forwardbutton");
+  
+          document.addEventListener('click', () => {
+              if (audioElement.paused) {
+                  audioElement.play();
+              }
+          });
+  
+          muteButton.addEventListener('click', () => {
+              audioElement.muted = !audioElement.muted;
+              muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+          });
+  
+          forwardButton.addEventListener("click", () => {
+              clickSfx.currentTime = 0;
+              clickSfx.play();
+              nxtText();
+          });
+  
+          const textBox = document.getElementById("narative");
+          const imageBox = document.getElementById("image");
+  
+          const content = [
+  
+          {
+              text:  "Limang buwan ang naging paglalakbay ni don diego at dahil sa hirap namatay din ang kaniyang kabayo. <br> Nagpatuloy siya sa paghahanap ng prinsipe, naglalakad dala ang baon.",
+              image: "art/AC4/ACtxt1.png"
+            },
+  
+          {
+              text:  "Hindi niya inaasahang narrating na pala niya ang piedras platas. Namangha siya sa kagandahan niyo at labis pinagtakahan <br>kung bakit walang dumadapo isa mang ibon sa kahoy na kumikinang",
+              image: "art/AC4/ACtxt2.png"
+            },
+  {
+              text: "<br> Nagpahinga si Don Diego sa isang batong naroon<br> hanggang dumating ang Ibong Adarna. <br><br>",
+              image: "art/AC4/ACtxt3.png"
+            },
+  {
+              text: "Nasaksihan niya ang pitong beses na pagkanta at pagbago ng kulay ng balahibo ng ibon ngunit sa lamyos ng tinig ng <br>mahiwagang ibon ay inantok at napaidlip si Don Diego.",
+              image: "art/AC4/ACtxt4.png"
+            },
+  {
+              text: "<br>Napatakan siya rin ng ipot ng mahiwagang ibon hanggang siya'y naging bato.<br>",
+              image: "art/AC4/ACtxt5.png"
+            }
+          
+          
+          ];
+  
+          let index = 0;
+  
+          // Initialize first content
+          textBox.innerHTML = content[index].text;
+          imageBox.src = content[index].image;
+          function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "hangman.html";
+                }
+            }
+          
+      });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <script>   document.addEventListener("DOMContentLoaded", function(){      
+    const audioElement = document.getElementById('audioElement');
+    const hoverSfx = document.getElementById('hoverSfx');
+    const clickSfx = document.getElementById('clickSfx');
+    const muteButton = document.getElementById('muteButton');
+    const interactiveElements = document.querySelectorAll('a, button,input,.resizedTextbox,div,.buttonz');
+
+    
+    // Ensure autoplay works
+    audioElement.addEventListener('canplaythrough', () => {
+        console.log('Audio is ready to play without buffering.');
+        audioElement.play();
+    });
+
+    // Handle cases where autoplay might be blocked
+    document.addEventListener('click', () => {
+        if (audioElement.paused) {
+            audioElement.play();
+        }
+    });
+
+    // Mute Button Toggle
+    muteButton.addEventListener('click', () => {
+        if (audioElement.muted) {
+            audioElement.muted = false;
+            muteButton.textContent = 'Mute';
+        } else {
+            audioElement.muted = true;
+            muteButton.textContent = 'Unmute';
+        }
+    });
+
+    // Add hover and click sound effects
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+        });
+
+        element.addEventListener('click', () => {
+            clickSfx.currentTime = 0;
+            clickSfx.play();
+        });
+        letterInput.addEventListener('keydown', () => {
+            clickSfx.currentTime = 0; // Reset playback to the beginning
+            clickSfx.play();
+
+    })
+    });
+    
+})</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+            background-color: #a85c22;
+        }
+
+        .container {
+            z-index: 0;
+            width: 1450px;
+    height: 700px;
+        background: white;
+        display: flex;
+        padding: 60px 40px;
+        border-radius: 10px;
+        align-items: absolute;
+        justify-content: absolute;
+}
+
+        .rectangle {
+        
+            border-radius: 12px;
+    display: flex;
+    position: absolute;
+    bottom: 8%;
+    left: 11.5%;
+    height:300px;
+    width:1470px;
+    background-color: rgb(0, 0, 0);
+        }
+
+        .dialogue2 {
+            font-family: dialogue;
+            text-align: left;
+            color: aliceblue;
+            font-size: 33px;
+            padding-left: 3%;
+                position: absolute;
+        }
+
+        .dialogue {
+            font-family: dialogue;
+            text-align: center;
+            font-size: 46px;
+        }
+        .dialogueh2{
+            font-family: dialogue;
+            text-align: center;
+            font-size: 66px;
+        }
+
+        #nextButton {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .forwardbutton {
+            font-family: arial;
+            font-size: 37px;
+            color: white;
+            background-color: black;
+            position: absolute;
+            top: 70%;
+            left: 93%;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .buttonz {
+            border: none;
+            outline: none;
+            padding: 15px 0;
+            font-size: 17px;
+            border-radius: 5px;
+            width: calc(100% / 2 - 8px);
+            background-color:#bc6c2e;
+            color: white;
+            cursor: pointer;
+            font-family: dialogue;
+            text-align: center;
+        }
+
+        .resizedTextbox {
+            bottom: 10%;
+            width: 700px;
+            height: 100px;
+            font-size: 60px;
+            border-style: solid;
+            border-width: 20px;
+            border-color: #d9c7be;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 5%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            width: 80%;
+            height: 60%;
+            background: white;
+            border-radius: 10%;
+        }
+
+        .close {
+            color: #9b7549;
+            float: right;
+           padding-right: 3%;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-size: 14px;
+            color: red;
+        }
+        #dialogueImage{
+            z-index: 1;
+            position: absolute;
+            left: 530px;
+            top: 10%;
+        }
+        @font-face {
+            font-family: genshin;
+            src: url(zh-cn.ttf);
+        }
+
+        @font-face {
+            font-family: dialogue;
+            src: url(CookieRunRegular.otf);
+        }
+        #myModal{
+            position: absolute; 
+            top: 15%;
+             left: 20%; 
+             width: 60%; 
+             height: 70%; 
+              background:rgb(255, 247, 240); 
+              border: solid; 
+              border-width: 100%;
+               border-color: #6f3000;
+        }
+       #answerInput{
+            font-family: dialogue;
+            text-align: center;
+       }
+    </style>
+</head>
+<body>
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/07.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Sound Effects -->
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+<div class="container">
+    <div style=" position: absolute;
+      padding: 20px;
+      left: 12%;
+      bottom: 85.5%;
+      color: #bd6920;">    
+        <button id="muteButton"style=" padding: 10px 20px;
+        font-family: genshin;
+        font-size: 20px;
+        color: #ffffff;
+        background-color:#bc6c2e;
+        border: 2px solid #9A7B4F;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
+    </div>
+    <div class="rectangle" style="z-index: 2; background-color: #4f0901;">
+        <p class="dialogue2" id="dialogueText">
+            
+        </p>
+        <button id="nextButton" class="forwardbutton"> > </button> <!-- Button is placed outside the paragraph -->
+    </div>
+    <img id="dialogueImage"   width="850" height="520">
+</div>
+
+<!-- Modals -->
+<div id="myModal" class="modal">
+   
+        <center>
+            <span class="close">&times;</span>
+            <h2 id="questionText" style=" padding-left:3%; color: #4a3728; font-family: dialogue; text-align: left; font-size: 35px;"></h2>
+            <br> <br> <br> <br> <br>
+            <input class="resizedTextbox" type="text" id="answerInput" placeholder="Sagot dito.">
+            <div class="dialogue" id="message"></div>
+            <br>
+            <br>
+            <button id="submitBtn" class="buttonz">Submit Answer</button>
+        </center>
+    
+</div>
+
+<div id="finalModal" class="modal">
+    <div style="position: absolute; top: 15%; left: 15%; width: 60%; height: 70%;  background: rgb(255, 225, 201); border: solid; border-width: 150%; border-color: #4A3728; border-radius: 2%;">
+        <h2 class="dialogueh2">Kongrats!</h2>
+        <p class="dialogue">Punta na sa susunod na istorya!</p>
+        <center> <button class="buttonz" id="finishButton">Pindot ito</button> </center>
+    </div>
+</div>
+
+<script>
+    // Array of dialogues and images
+    const dialogues = [
+        "Nakapuwesto si Don Juan sa ilalim ng Piedras Platas. Hindi siya napagod sa pag-iintay kung kaya’t nasaksihan niya ang taglay na gilas at kariktan ng Ibong Adarna. Umawit ito at nagpalit na ang kulay ng kanyang mga balahibo.",
+        "Nang marinig ang awit ng ibon ay humikab si Don Juan.",
+       "Ginawa niya ang bilin ng ermitanyo na hiwain ang palad at pigaan ng dayap ang sugat. ",
+       "Nawala ang nararamdaman niyang antok dahil sa sakit ng kanyang sugat.",
+       "Nagkaroon ng pitong sugat si Don Juan katumbas ng pitong awit ng Ibong Adarna.",
+       "Muling dumumi ang ibon at naiwasan naman ito ng prinsipe. Nang makatulog ang ibon ay marahan na umakyat sa puno si Don Juan at agad na sinunggaban ang ibon pang maitali gamit ang gintong sintas."
+    ];
+
+    const images = [
+        "art/ACT7/1.3.png", 
+        "art/ACT7/1.jpeg", 
+        "art/ACT7/2.jpeg",  
+        "art/ACT7/3.jpeg",
+         "art/ACT7/4.jpeg",
+          "art/ACT7/5.jpeg"
+    ];
+
+    const questions = [
+        { question: "Umalis si Don Pedro ng ilang buwan para sa ibong Adarna. Ano ang salitang ugat ng umalis?", answer: "alis" },
+        { question: "Dalawang kabayo ang nabawasan sa kahiran ng berbanya dahil sa naunang magkapatid. Ano ang salitang ugat ng nabawasan?", answer: "bawas" },
+        { question: "Inaantok na si Don Juan sa kanta ng Ibong Adarna. Ano ang salitang ugat ng Inaantok?", answer: "antok" },
+        { question: "Sa nakatalos ni Don Pedro ang paboritong anak ng hari ay si Don Juan. Ano ang salitang-ugat ng nakatalos?", answer: "talos"},
+        { question:"Sa ilalim ng Piedras Platas pumuwesto ang prinsipe habang naghihintay sa Ibong Adarna. Ano ang salitang-ugat ng pumuwesto?", answer: "puwesto"},
+        { question:"Pagkatapos ng pangpito na kanta ng Adarna ay magwakas ang kaniyang ritwal bago magdumi. Ano ang salitang-ugat ng magwakas?", answer: "wakas"}
+    ];
+
+    // DOM elements
+    const modal = document.getElementById("myModal");
+    const finalModal = document.getElementById("finalModal");
+    const nextButton = document.getElementById("nextButton");
+    const closeButton = document.getElementsByClassName("close")[0];
+    const questionText = document.getElementById("questionText");
+    const answerInput = document.getElementById("answerInput");
+    const message = document.getElementById("message");
+    const submitBtn = document.getElementById("submitBtn");
+    const finishButton = document.getElementById("finishButton");
+    const dialogueText = document.getElementById("dialogueText");
+    const dialogueImage = document.getElementById("dialogueImage");
+
+    let currentDialogueIndex = 0;
+    let currentQuestionIndex = 0;
+
+    // Function to update dialogue text and image after each modal interaction
+    function updateDialogue() {
+        if (currentDialogueIndex < dialogues.length) {
+            dialogueText.innerHTML = dialogues[currentDialogueIndex];
+            dialogueImage.src = images[currentDialogueIndex];  // Update the image based on the dialogue index
+        } else {
+            openFinalModal();  // All dialogues finished, show final modal
+        }
+    }
+
+    // Handle the next button click
+    nextButton.onclick = function () {
+        if (currentQuestionIndex < questions.length) {
+            openModal(); // Show the modal with the question
+        } else {
+            currentDialogueIndex++;  // Move to the next dialogue
+            updateDialogue();
+        }
+    };
+
+    // Open the modal with a question
+    function openModal() {
+        questionText.innerText = questions[currentQuestionIndex].question;
+        answerInput.value = "";
+        message.innerText = "";
+        modal.style.display = "block";
+    }
+
+    // Close modal
+    closeButton.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target === modal || event.target === finalModal) {
+            modal.style.display = "none";
+            finalModal.style.display = "none";
+        }
+    };
+
+    // Submit the answer and check correctness
+    submitBtn.onclick = function () {
+        const userAnswer = answerInput.value.toLowerCase();
+        const correctAnswer = questions[currentQuestionIndex].answer;
+        if (userAnswer === correctAnswer) {
+            message.innerText = "Tama!";
+            message.style.color = "green";
+            currentQuestionIndex++;
+            setTimeout(() => {
+                modal.style.display = "none";
+                currentDialogueIndex++;  // Move to the next dialogue
+                updateDialogue();
+            }, 1000);  // Wait for 1 second before moving to the next dialogue
+        } else {
+            message.innerText = `Mali! Ulitin mo!`;
+            message.style.color = "red";
+        }
+    };
+
+    // Show final modal after all questions are answered
+    function openFinalModal() {
+        modal.style.display = "none";
+        finalModal.style.display = "block";
+    }
+
+    // Finish button in the final modal
+    finishButton.onclick = function () {
+        window.location.href = "AC8.html";  // Redirect to next page
+    };
+
+    // Start the dialogue flow
+    updateDialogue();
+</script>
+
+</body>
+</html>

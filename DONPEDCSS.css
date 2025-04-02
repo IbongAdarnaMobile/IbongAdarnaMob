@@ -1,0 +1,80 @@
+body{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;
+    background-color: rgb(70, 96, 240);
+}
+.container{
+    
+    width: 1450px;
+    height: 700px;
+    background:  #ba7d7d;
+        display: flex;
+        padding: 60px 40px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+        z-index:0;
+}
+
+.img1{
+  position:absolute;
+  top: 120px;
+  z-index:1;
+}
+.dialogue{
+    font-family: dialogue;
+    text-align: center;
+}
+.back a{
+    position: absolute;
+    top:100px;
+    left: 12%;
+    font-size: 25px;
+    font-family: genshin;
+    text-decoration: none;
+    color: rgb(24, 24, 158);
+}
+@font-face {
+    font-family:genshin;
+    src: url(zh-cn.ttf);
+}
+@font-face {
+    font-family:dialogue;
+    src: url(CookieRunRegular.otf);
+}
+.rectangle{
+    border-radius: 12px;
+    display: flex;
+    position: absolute;
+    top:670px;
+    height:200px;
+    width:1470px;
+    background-color: #2a0d11;
+}
+#forwardbutton {
+    font-family:arial;
+    font-size: 37px;
+    color: aliceblue;
+    position: absolute;
+    top:825px;
+    left: 1650px;
+    font-weight: bold;
+    text-decoration: none;
+}
+#forwardbutton a {
+    font-family:arial;
+    font-size: 37px;
+    color: aliceblue;
+    text-decoration: none;
+}
+
+#narative{
+    font-size:23px;
+    position: absolute;
+    top:15px ;
+    left: 40px;
+    color: aliceblue;
+    font-family: dialogue;
+}

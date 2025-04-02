@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body>
+
+    <audio id="audioElement" autoplay loop>
+      <source src="mus/06.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC9/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"></p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+
+            {text:"Sa kanilang pag-uwi ay nauunang naglalakad si Don Juan dala-dala ang hawla. <br>Habang nasa likod naman nito ang dalawa pa niyang kapatid. <br>Palihim na kinakausap ni Don Pedro si Don Diego.",
+image: "art/AC9/ACtxt1.png"
+},
+ {
+  text: "Dahil sa sobrang inggit nito kay Don Juan, binalak ni Don Pedro na patayin <br>ang kaniyang bunsong kapatid ngunit ito ay tinutulan ni Don Diego.",
+  image: "art/AC9/ACtxt2.png"
+},
+ {
+  text: "Sa halip na patayin ay napagkasunduan ng dalawa na bugbugin nalang si Don Juan sa kagubatan na ito aabutan ng kamatayan at<br> madadala pa nila ang  Ibong Adarna sa kaharian ng Berbanya.",
+  image: "art/AC9/ACtxt3.png"
+},
+ {
+  text: "Hindi nanlaban si Don Juan kahit pa siya ang<br> pinagtutulungan na bugbugin ng dalawa niyang kapatid. ",
+  image: "art/AC9/ACtxt4.png"
+},
+ {
+  text: "Iniwan ng magkapatid si Don Juan na nakagulapay sa gitna ng kagubatan.<br> Tumakas sila tangay ang Ibong Adarna ",
+  image: "art/AC9/ACtxt5.png"
+},
+
+]
+ 
+
+
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "AC10.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>

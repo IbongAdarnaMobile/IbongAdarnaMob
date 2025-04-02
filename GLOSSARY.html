@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<head> <script src="AUDIO.js" defer></script>
+    <script>                  const muteButton = document.getElementById('muteButton'); // Mute/unmute button
+        muteButton.addEventListener('click', () => {
+            audioElement.muted = !audioElement.muted;
+            muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+        });</script>
+    <style> 
+
+
+
+        ::-webkit-scrollbar {
+      width: 15px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #ffd277; 
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #6b4f39; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #594130; 
+    }
+        
+        
+    a{
+        font-family: genshin;
+    text-align: left;
+    text-decoration: none;
+    color: #532c05;}
+    
+    .link{font-family: genshin;
+    font-size: 47px;
+    text-align: left;
+    text-decoration: none;
+    color: #532c05;}
+    .link:hover{
+    
+    text-shadow: 3px 3px 0 #ffffff, -3px 3px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff;
+    
+              
+          }
+        body{
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+        background-color:#4A3728;
+        }
+        .container{
+            
+            width: 1450px;
+            height: 700px;
+                background:#9A7B4F;
+                display: flex;
+                padding: 60px 40px;
+                border-radius: 10px;
+                align-items: center;
+                justify-content: center;
+                overflow-x: hidden;
+                overflow-y: auto;
+        }
+        .dialogue{
+            font-family: dialogue;
+            text-align: center;
+            font-size: 150%;
+            width: 1450px;
+            height: 700px;
+        }
+        .back a{
+            position: absolute;
+            top:100px;
+            left: 12%;
+            font-size: 15px;
+            font-family: genshin;
+            text-decoration: none;
+           color: #4A3728;
+        }
+        @font-face {
+            font-family:genshin;
+            src: url(zh-cn.ttf);
+        }
+        @font-face {
+            font-family:dialogue;
+            src: url(CookieRunRegular.otf);
+        }
+        .rectangle{
+            border-radius: 12px;
+            display: flex;
+            position: absolute;
+            top:570px;
+            height:300px;
+            width:1470px;
+            background-color: black;
+        }
+        #forwardbutton {
+            font-family:arial;
+            font-size: 37px;
+            color: aliceblue;
+            position: absolute;
+            top:825px;
+            left: 1650px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        #forwardbutton a {
+            font-family:arial;
+            font-size: 37px;
+            color: aliceblue;
+            text-decoration: none;
+        }
+        
+        #narative{
+            font-size:23px;
+            position: absolute;
+            top:15px ;
+            left: 40px;
+            color: aliceblue;
+            font-family: dialogue;
+            padding-left:3%;
+        }</style>
+    
+</head>
+<body style="background-color:#4A3728;">
+    <audio id="audioElement" autoplay loop>
+
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Sound Effects -->
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div style=" position:absolute; right:85%;bottom:85%; font-size:250%;"><a href="TITLE.html">BALIK</a> </div>
+    <div class ="container" style="overflow-x: hidden;
+            overflow-y: auto;"><div style=" position: absolute;
+      padding: 20px;
+      left: 20%;
+      bottom: 83.5%;
+      color: #9A7B4F;"> 
+
+    </div>
+
+<div class="dialogue">
+    <div style="color:#1a0d01">
+        <h1 style="color:#311a03;">MGA LARO</h1>
+=-=-=-=-=-=-=
+<h2 style="color:#311a03;"> Paglakbay ni Don Pedro </h2>
+---
+<br><br><u>Hanga</u> - damdamin ng kasiyahan, pagkagulat, o panggigilalas <br>sa nakikítang kagandahan ng isang tao, bagay, gawain, o paligid
+<br><br><u>Uliran</u> - Pamantayan sa mataas na uri o katangian
+<br><br><u>Tindig </u> - Paraan ng pagkakatayo o pagkilos na nagpapakita <br>ng dignidad at respeto sa sarili sa isang tiyak na posisyon o pagharap sa iba.
+<br><br><u>Mapugto</u> -Ang biglaang paghinto o pagtatapos.
+<br><br><u>Tugon</u> - ito ay ang pagbibigay ng reaksiyon, impormasyon, o paliwanag<br> bilang kasagutan sa tanong, utos, o kahilingan.
+<br><br><u>Malumanay</u> -Marahan o banayad sa pagkilos sa anumang ginagawa.
+<br><br><u>Prinsipe</u> -Laláking nabibílang sa dugong maharlika
+<br><br><u>Tatwa</u> - ang pagtanggi o hindi pagtanggap sa isang bagay, kahilingan,<br> panukala, o alok; kilos ng hindi pagsang-ayon.
+<br><br><u>Paborito</u> - Táo, bagay, o anumang itinatangì, lalong <br>kinagigiliwan o gusto nang higit kaysa iba.
+<br><br><u>Inggit</u> -Pakiramdam ng pagkainis o pagkadeskontento sa kapuwa dahil sa kahigitán nitó.
+<br><br>
+<h2 style="color:#311a03;"> Paglakbay ni Don Diego </h2>
+---
+<br><br><u>Malubha</u> - Mabigat kaysa karaniwan, tulad ng isang karamdaman.
+<br><br><u>Panaginip</u>- Serye ng mga guniguning senaryo na nakikíta sa oras ng <br>mahimbing na pagtulog.
+<br><br><u>Nakatalos</u>- Pagkakaroon ng kakayahan at kaalaman upang lubos na <br>maunawaan ang diwa okahulugan ng isang bagay o ideya.
+<br><br><u>antog </u>- Kilalá sa lahat ng dáko, karaniwang dahil sa magandang nagawa.
+<br><br><u>Maselan</u> - Malubhang kalagayan.
+<br><br><u>Lunas </u>- Medesina, anumang bagay na nagpapagaling sa may sakit.
+<br><br><u>Ginhawa</u>- Kasiya-siyang pakiramdam ng tao dahil sa preskong panahon,<br> paggalíng mula sa sakít, pagkalutas ng suliranin, pagkamit ng nais, at katulad.
+<br><br><u>Utusan </u>- ang pagbibigay ng tagubilin o kautusan sa isang tao <br>para gawin o hindi gawin ang isang bagay.
+
+<br><br>
+<h2 style="color:#311a03;"> WORD SCRABBLE </h2>
+
+---
+<br><br>
+<u>Buwan</u> -Isa sa 12 hatì ng isang taon na binubuo ng apat<br> na linggo na mayroong 28 hanggang 31 araw. <br><br>
+<b><u>Lakbay</u></b> -Pagtúngo sa malayong pook lalo na upang<br> makipagsapalaran o makakita ng magagandang tanáwin<br><br>
+<u>Sanga</u> - Bahagi ng punongkahoy o anumang halaman na <br>tumutubò sa pinakakatawan at inuusbungan naman ng mga dahon. <br><br>
+<u>Balahibo</u> - Malambot na materyal na bumabálot sa mga ibon. <br><br>
+<u>Iglap</u> -Isang maikling sandalî; panahon na napakabilis naganap. <br><br>
+<u>Kaharian</u> -Bansa o bayang pinamumunuan ng isang hari. <br><br>
+<u>Narating</u> -Ang kakayahang makapunta sa isang lugar,<br> punto, kalagayan, o makamit ang isang bagay. <br><br>
+<u>Labis</u> -Kahigitan sa takdang súkat o dami. <br><br>
+<u>Dumadapo</u> -bumaba at humimpil sa isang lugar o bagay <br>mula sa paglipad o paggalaw, katulad ng pagpapahinga ng ibon sa sanga. <br><br>
+<u>Pahinga</u>- Pagtigil sa paggawâ ng isang napapagod upang<br> makaipon ng lakas. <br>
+<br>
+<u>Nasaksihan</u>- Ang direktang pagkakita o pagdanas ng isang pangyayari, <br>gawain, o kaganapan, na nagbibigay ng personal <br>na kaalaman o karanasan sa pamamagitan ng pagiging naroroon. <br><br>
+<u>Lamyos</u>- Masuyong haplos. <br><br>
+<u>Napaidlip</u>- sandaling makatulog nang hindi sinasadya. <br><br>
+<u>Napatakan</u>- Matuluan, malagpakan. <br><br>
+
+
+<h3 style="color:#311a03;">7 na tanong  </h3> <br>
+--- <br>
+<u>Alis</u> – Salitang ugat ng Umalis<br><br>
+<u>Bawas</u> – Salitang ugat ng Nabawasan <br><br>
+<u>Antok</u> – Salitang ugat ng inaantok<br><br>
+<u>Silaw</u> – Salitang ugat ng nakakasilaw<br><br>
+<u>Talos</u> – Salitang ugat ng nakatalos<br><br>
+<u>Puwesto</u> – salitang ugat ng pumuwesto<br><br>
+<u>Wakas</u> – salitang ugat ng pagkatapos<br><br>
+<h2 style="color:#311a03;">Palarong Gamot </h2>
+--- <br>
+<u>Lumipas </u>- Dumaan ang panahon. <br><br>
+<u>Lumalala</u> - Tumindi o umigting ang kalagayan ng sakit o karamdaman, nagpakita ng <br>higit na masamang sintomas o epekto. <br><br>
+<u>Hanapin </u>- Ang pagkilos o gawain ng pagsisikap na matukoy at matagpuan ang isang<br> bagay, lugar, o tao na nawawala o nais makita o makamtan. <br><br>
+<u>Pahamak </u>- Sinuman o anumang nagiging sanhî ng kabiguan o kapahamakan ng isang táo,<br> panukalà, pamamaraan, balak, atbp. <br><br>
+<u>Biyaya</u> - Anumang natatamo ng isang tao na karaniwang pinasasalamatan sapagkat <br>nakabubuti at kapaki-pakinabang. <br><br>
+<u>Baon </u>- Anumang bagay na dinadalá kapag patúngo sa ibang pook upang magamit <br>lalo na kung pera, pagkain, at damit. <br><br>
+    <u>Kapatagan</u> - Malawak at patag na lupain, karaniwang taníman ng palay, mais,<br> at iba pang pananim. <br><br>
+        <u>Limos</u> - Abuloy na pera at iba pang bagay. <br><br>
+            <u>Maginoo</u> - Laláking matikas at may kagalang-galang na katangian. <br><br>
+                <u>Taglay</u> - Kalagayan ng pagdadalá o pagkakaroon ng anuman lalo na kung katangian. <br><br>
+                    <u>Pakay</u> - Anumang kailangan ng isang dumating sa dinatnan. <br><br>
+                        <u>Mabisang</u> - May kakayahan at nagbibigay ng ninanais na resulta o epekto sa <br>pagtupad ng layunin o kinalabasan ng isang gawain. <br><br>
+                            <u>Nagbilin</u> - Ang pagbibigay ng panuto, utos, o impormasyon sa isang <br>tao tungkol sa dapat gawin o sundin. <br><br>
+                                <u>Tumanaw</u> - Ang pagtuon ng paningin sa malayo o sa isang bagay na hindi kalapitan; pagmasid<br> sa lugar o bagay na nasa malayong distansya. <br><br>
+                                    <u>Dampa</u> - Maliit na tahanang tinitirahan ng mga maralita <br>na karaniwang yarì sa marupok na materyales. <br><br>
+                                        <u>Pook</u> - isang espesipikong bahagi o teritoryo sa mas malawak na espasyo. <br><br>
+                                            <u>Ermitanyo</u> - Táong lumayo at nanirahan sa isang mapanglaw na pook <br>upang mamuhay nang tahimik at maging relihiyoso. <br><br>
+                                                <u>Engkantado</u> - diwata na may mahiwagang kapangyarihan, naninirahan sa hindi nakikitang <br>kagubatan o kaharian, at nagbibigay ng sumpa o biyaya depende sa pakikitungo sa kanya. <br><br>
+                                                    <u>Hantinggabi</u> - Oras sa kalagitnaan ng gabí na ika-12 sa orasán. <br><br>
+                                                        <u>Dayap</u> - Isang botanikang sitrus na tumataas hanggang 4 metro, matitinik ang sanga,<br> maputi at mabango ang bulaklak, at may bungang bilugán na maasim ang katas. <br><br>
+                                                            <u>Sintas </u>- Panalì na ginagámit sa sapatos. <br><br>
+                                                                <u>Aalpas</u> - makalaya o makatakas mula sa pagkakagapos, pagkakakulong, pagkakatali, o pagkakahawak. <br><br>
+                                                                    <u>Puwesto</u>- Lugar o dakong sadyang lalagyán ng isang bagay. <br><br>
+                                                                        <u>Masaksihan</u> - Makita o maging saksí ng anumang pangyayari;<br> mapatunayan sa pamamagitan ng pagkakakita sa nangyari. <br><br>
+                                                                            <u>Kariktan</u> - Ang katangian o kalidad ng isang bagay o tao na lubos na kaakit-akit, kahanga-hanga, at may natatanging ganda na nakakagawa ng malalim na paghanga. <br><br>
+                                                                                <u>Antok</u> - Pakiramdam ng isang tao na ibig matulog. <br><br>
+
+        
+</div>
+
+
+</div>
+
+</div>
+
+     
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body style="    background-color:#f3bf31;">
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/05.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC5/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"> Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari na utusan si don juan upang hanapin ang dalawa niyang kapatid at ang ibong adarna</p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+
+{
+    text:  " Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari n utusan si don juan upang hanapin ang dalawa niyang kapatid at ang ibong adarna",
+    image: "art/AC5/ACtxt1.png"
+  },
+
+{
+    text:  "Nagaalala siyang bakaapahamak ang bunsong anak. Humingi ng bendisyon si don juan upang payagan siyang maglakbay, sa takot ng hari baka maisipan ni don juan na magtanan ay pinahintulutan niya ito.",
+    image: "art/AC4/ACtxt2.png"
+  },
+{
+    text: "Hindi nagdala ng kabayo si don juan at siya ay naglakad dahil na niniwala siya na ang matapat na layunin ang magbibigay sakaniya ng biyaya.",
+    image: "art/AC4/ACtxt3.png"
+  }
+
+]
+//erich kys, too long im gonna cry, crying crying crying crying cryinh vryihmn ceying cereinh cvrtiugn
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "hangman.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>

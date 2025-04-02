@@ -1,0 +1,92 @@
+<!DOCTYPE html style="zoom:67%;">
+<head>
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+    <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
+        const hoverSfx = document.getElementById('hoverSfx');
+        const clickSfx = document.getElementById('clickSfx');
+        const muteButton = document.getElementById('muteButton');
+        const interactiveElements = document.querySelectorAll('a, button,div,.forwardbutton');
+      
+        // Ensure autoplay works
+        audioElement.addEventListener('canplaythrough', () => {
+            console.log('Audio is ready to play without buffering.');
+            audioElement.play();
+        });
+      
+        // Handle cases where autoplay might be blocked
+        document.addEventListener('click', () => {
+            if (audioElement.paused) {
+                audioElement.play();
+            }
+        });
+      
+        // Mute Button Toggle
+        muteButton.addEventListener('click', () => {
+            if (audioElement.muted) {
+                audioElement.muted = false;
+                muteButton.textContent = 'Mute';
+            } else {
+                audioElement.muted = true;
+                muteButton.textContent = 'Unmute';
+            }
+        });
+  
+        // Add hover and click sound effects
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                hoverSfx.currentTime = 0;
+                hoverSfx.play();
+            });
+      
+            element.addEventListener('click', () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+            });
+        });
+        
+      })</script>
+
+</head>
+<body style="    background-color:#6194d9;">  <div style=" position: absolute;
+    padding: 20px;
+    left: 12%;
+    bottom: 85.5%;
+    color: #4f639a;">    
+      <button id="muteButton"style=" padding: 10px 20px;
+      font-family: genshin;
+      font-size: 20px;
+      color: #ffffff;
+      background-color: #28354a;
+      border: 2px solid #4f569a;
+      border-radius: 5px;
+      cursor: pointer;
+      text-shadow: 1px 1px 0 #4f569a;">Mute</button>
+  </div>
+<audio id="audioElement" autoplay loop>
+  <source src="mus/choice.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Sound Effects -->
+<audio id="clickSfx">
+  <source src="sfx/nxt.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    <div class ="container" style=" background-color:  #a6d4fd;">
+<div>
+
+<IMG class="img1" id="image" src="art/ACtxt1.png" width="850" height="500">
+
+</div>  
+        <div class="rectangle">
+         
+            <p class = "narative"> </p> <P class="truthlessrecluse" style="z-index: 2;">Pumili ng direksyon</P>
+            <a href="malinis.html">
+            <button class="GAY">Malinis na daan</button> </a> <a href="mabangin.html">
+            <button class="GAY">Mabangin na daan</button>
+        </a>
+        </div>
+      
+    </div>
+    </body>
+    </html>

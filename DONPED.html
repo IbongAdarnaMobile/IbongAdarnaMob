@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/prologuestyle.css">
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const audioElement = document.getElementById('audioElement');
+        const clickSfx = document.getElementById('clickSfx');
+        const muteButton = document.getElementById('muteButton');
+        const forwardButton = document.getElementById("forwardbutton");
+
+        document.addEventListener('click', () => {
+            if (audioElement.paused) {
+                audioElement.play();
+            }
+        });
+
+        muteButton.addEventListener('click', () => {
+            audioElement.muted = !audioElement.muted;
+            muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+        });
+
+        forwardButton.addEventListener("click", () => {
+            clickSfx.currentTime = 0;
+            clickSfx.play();
+            nxtText();
+        });
+
+        const textBox = document.getElementById("narative");
+        const imageBox = document.getElementById("image");
+
+        const content = [
+            {
+                text: "Tatlong buwan ang ginawang paglalakbay ni Don Pedro bago natagpuan<br> ang landas paakyat ng Bundok Tabor.",
+                image: "art/AC2/ACT1.png"
+            },
+            {
+                text: "Hindi nakayanan ng kanyang kabayo ang hirap kaya nasawi. <br> Hindi naglaon ay natagpuan niya ang Piedras Platas.",
+                image: "art/AC2/ACT2.png"
+            },
+            {
+                text: "Namangha si Don Pedro sapagkat kumikinang itong tila diyamante. <br>Matagal siya naghintay sa ilalim ng puno hanggang sa nakatulog,<br> hindi niya namalayan ang pagdating ng ibong adarna.",
+                image: "art/AC2/ACT3.png"
+            },
+            {
+                text: "Humapon ang ibon sa sanga ng Piedras Platas at agad nagpalit ng balahibo. <br>Pitong ulit kumanta at pitong ulit nagpalit ang kulay ng balahibo.<br> Nakasanayan ng Ibong Adarna dumumi bago matulog.",
+                image: "art/AC2/ACT3.png"
+            },
+            {
+                text: "Ang ipot ng ibon ay pumatak sa natutulog na si Don Pedro. <br>Iglap lamang at ang panganay na prinsipe ng Berbanya ay naging bato.",
+                image: "art/AC2/ACT4.png"
+            }
+        ];
+
+        let index = 0;
+
+        // Initialize first content
+        textBox.innerHTML = content[index].text;
+        imageBox.src = content[index].image;
+
+        function nxtText() {
+            if (index < content.length - 1) {
+                index++;
+                textBox.innerHTML = content[index].text;
+                imageBox.src = content[index].image;
+            } else {
+                // Redirect to hangman.html when the last content is shown
+                window.location.href = "ACT 4 PRE.html";
+            }
+        }
+        
+    });
+  </script>
+
+  <style> 
+    .hyper-start-3 {
+        position: absolute;
+        padding: 20px;
+        left: 12%;
+        bottom: 85.5%;
+        color: #8d2121;
+    }
+    .mute-button {
+        padding: 10px 20px;
+        font-family: genshin;
+        font-size: 20px;
+        color: #ffffff;
+        background-color: #4a2828;
+        border: 2px solid #9a4f4f;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: 1px 1px 0 #8e7979;
+    }
+  </style>   
+</head>
+<body style="background-color:#bc3a3a">
+
+  <audio id="audioElement" autoplay loop>
+      <source src="mus/03.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+
+  <!-- Sound Effects -->
+  <audio id="clickSfx">
+      <source src="sfx/nxt.wav" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+      <div class="hyper-start-3">    
+          <button id="muteButton" class="mute-button">Mute</button>
+      </div>
+      <img class="img1" id="image" src="art/AC2/ACT1.png" width="1000" height="580" style="position: relative; top:-15.5%;" z-index=-1>
+      <div class="rectangle">
+          <p id="narative" class="txt1"></p>
+      </div>
+      <div id="forwardbutton" class="forwardbutton"> > </div>
+  </div>
+
+</body>
+</html>

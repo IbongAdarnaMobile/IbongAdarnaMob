@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body>
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/12.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC12/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+
+            {
+  text: " 'Aba, Haring Don Fernando, Monarka ng buong reyno, si Don Juan pong bunso mo'y<br> kaharap na't naririto.'",
+  image: "art/AC12/ACtxt1.png"
+},
+
+{
+  text: "Nakabalik ng kaharian ng Berbanya si Don Juan. Namutla sina Don Pedro at<br> Don Diego nang makita ang bunsong kapatid.",
+  image: "art/AC12/ACtxt2.png"
+},
+    
+{
+  text: "Agad lumuhod sa harapan ng hari si Don Juan habang nakaratay pa rin sa<br> higaan ang ama.  ",
+  image: "art/AC12/ACtxt3.png"
+},
+
+{
+  text: "Umawit ang Ibong Adarna at inilahad ang buong katotohanan. ",
+  image: "art/AC12/ACtxt4.png"
+},
+
+ {
+  text: "Pitong ulit itong nagpakitang gilas ng pagpapalit ng balahibo habang isinasalaysay ang mga pinagdaanang hirap ni Don Juan, simula sa kaniyang paglalakad<br> hanggang sa pagtaksilan ng dalawang sukab na prinsipe.",
+  image: "art/AC12/ACtxt5.png"
+},
+
+{
+  text: "Matapos ang ikapitong awit ng ibon ay tila hindi man lamang<br> nagkaroon ng karamdaman ang hari at bigla itong nakatayo.",
+  image: "art/AC12/ACtxt6.png"
+},
+
+ {
+  text: " Sa labis na kagalakan ay niyakap si Don Juan at hinagkan pati ang ibon.",
+  image: "art/AC12/ACtxt6.png"
+},
+
+ {  text: "Tinipon niya ang mga kagawad ng palasyo upang hatulan na ipatapon<br> sina Don Pedro at Don Diego bilang kaparusahan.",
+  image: "art/AC12/ACtxt7.png"
+},
+
+{  text: " Nahabag si Don Juan sa mga kapatid kaya agad lumuhod sa harap ng ama. Inihingi niya ng kapatawaran ang dalawang kapatid.<br> Lumambot ang puso ng hari dahil sa kababang loob ng kanyang bunso. ",
+  image: "art/AC12/ACtxt8.png"
+},
+
+{
+  text: "Pinatawad ng hari ang dalawang prinsipe sa pangakong hindi na mauulit ang kataksilang iyon. \'sa araw na kayo\’y muling magkasala kahit,<br> hindi ko kayo papatawarin kahit sino man humingi\' ",
+   image: "art/AC12/ACtxt9.png"
+},
+{
+  text: "sapagkat sa susunod ay kamatayan na ang magiging kapalit.  ",
+   image: "art/AC12/ACtxt10.png"
+},
+  {
+  text: "Labis ang kagalakang niyakap ni Don Juan ang dalawang kapatid. ",
+   image: "art/AC12/ACtxt11.png"
+},
+
+  {
+  text: "Nagbalik ang kasiyahan sa buong palasyo dahil sa tuluyang paggaling <br>ng hari na naging aliwan ang pag-awit ng Ibong Adarna. ",
+   image: "art/AC12/ACtxt12.png"
+}
+            ];
+
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "WOW.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>

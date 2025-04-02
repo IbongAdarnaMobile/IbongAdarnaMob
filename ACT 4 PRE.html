@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+    <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
+        const hoverSfx = document.getElementById('hoverSfx');
+        const clickSfx = document.getElementById('clickSfx');
+        const muteButton = document.getElementById('muteButton');
+        const interactiveElements = document.querySelectorAll('a, button,.forwardbutton');
+
+        // Ensure autoplay works
+        audioElement.addEventListener('canplaythrough', () => {
+            console.log('Audio is ready to play without buffering.');
+            audioElement.play();
+        });
+
+        // Handle cases where autoplay might be blocked
+        document.addEventListener('click', () => {
+            if (audioElement.paused) {
+                audioElement.play();
+            }
+        });
+
+        // Mute Button Toggle
+        muteButton.addEventListener('click', () => {
+            if (audioElement.muted) {
+                audioElement.muted = false;
+                muteButton.textContent = 'Mute';
+            } else {
+                audioElement.muted = true;
+                muteButton.textContent = 'Unmute';
+            }
+        });
+
+        // Add hover and click sound effects
+        interactiveElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                hoverSfx.currentTime = 0;
+                hoverSfx.play();
+            });
+
+            element.addEventListener('click', () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+            });
+        });
+        
+    })</script>
+    <link rel="stylesheet" href="CSS/ACT 4 PRE.css">
+</head>
+<body style="    background-color:#7a79b7;">
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/04.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Sound Effects -->
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class ="container"> <div style=" position: absolute;
+        padding: 20px;
+        left: 12%;
+        bottom: 85.5%;
+        color: #844f9a;">    
+          <button id="muteButton"style=" padding: 10px 20px;
+          font-family: genshin;
+          font-size: 20px;
+          color: #ffffff;
+          background-color:#41284a;
+          border: 2px solid #9A7B4F;
+          border-radius: 5px;
+          cursor: pointer;
+          text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
+      </div>
+      <div style="bottom:25.5%; position:absolute; z-index:1;">
+           
+        <img class="img1" id="image" src="art/AC3/ACtxt1.png" width="850" height="590">
+        </div>
+           
+
+    <div class="rectangle" style="z-index: 4;">
+        <p id = "narative" class="txt1"> Hindi na nakabalik si Don Pedro sa kaharian ng Berbanya kaya inatasan ng kaniyang Ama at Haring Fernando 
+            <BR>ang ikalawang anak na si Don Diego upang ibalik ang kaniyang kapatid at hulihin ang Ibong Adarna.</p>
+               
+    </div>
+    <div class ="forwardbutton" style="z-index: 5;"> <a href="hangman dondiego.html" > > </a></div>
+   
+</div>
+</body>
+</html>

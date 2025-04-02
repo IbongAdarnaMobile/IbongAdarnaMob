@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body>
+
+    <audio id="audioElement" autoplay loop>
+      <source src="mus/06.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC6/ACtxt1.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1">Humingi ng limos ang leproso kay Don Juan. <br>“Maginoo, maawa ka, kung may baon kayong dala na.“</p>
+        </div>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+
+            {
+    text: "Humingi ng limos ang leproso kay Don Juan. <br>“Maginoo, maawa ka, kung may baon kayong dala na.“",
+    image: "art/AC6/ACtxt1.png"
+  },
+ {
+    text: "Ipinagkaloob ng Prinsipe sa matanda ang natitira niyang tinapay. <br> Ako nga po ay may taglay, natirang isang tinapay na baon sa paglalakbay.“",
+    image: "art/AC6/ACtxt2.png"
+  },
+      
+{
+    text: "Nalaman ng Leproso ang pakay ni Don Juan sa lugar na iyon.<br> <br>",
+    image: "art/AC6/ACtxt3.png"
+  },
+
+ {
+    text: "“Ama ko po'y nakaratay sa malubhang karamdaman, Ibong Adarna nga lamang <br>ang mabisang kagamutan.'" + "'' Bukod dito'y may isa pa, ngayon po'y tatlong taon na, <br>ang kapatid kong dalawa'y nawawala't di makita“",
+    image: "art/AC6/ACtxt4.png"
+  },
+
+{
+    text: " “Sa aba ko o, Don Juan, sa matandang katugunan,<br> malaki pang kahirapan ang iyong pagdaraanan.“",
+    image: "art/AC6/ACtxt4.png"
+  },
+
+ {
+    text: "Nagbilin siya kay Don Juan na huwag masilaw sa kinang ng<br> Piedras Platas at sa halip ay tumanaw sa ibaba upang makita ang isang dampa.",
+    image: "art/AC6/ACtxt5.png"
+  },
+
+ {
+    text: "“Sa pook na natatanaw ay may kahoy kang daratnan,<br> dikit ay di ano lamang kawili-wiling titigan.“",
+    image: "art/AC6/ACtxt5.png"
+  },
+
+ {
+    text: "“Doon ay huwag kang titigil at sa ganda ay mahumaling,<br> sapagkat ang mararating ang buhay mo ay magmaliw.“",
+    image: "art/AC6/ACtxt5.png"
+  },
+
+ {
+    text: "“Sa ibaba'y tumanaw ka't may bahay na makikita,<br> ang naroong tao'y siyang magtuturo sa Adarna, “",
+    image: "art/AC6/ACtxt5.png"
+  },
+
+ {
+    text: "Isinauli ng Leproso ang tinapay kay Don Juan pero ayaw iyong tanggapin ng prinsipe. <br><br>",
+    image: "art/AC6/ACtxt6.png"
+  },
+
+ {
+    text: "“Itong limos mong tinapay dalhin mo na, o, Don Juan,<br> nang mabaon mo sa daa't malayo'ng paroroonan. “",
+    image: "art/AC6/ACtxt7.png"
+  },
+
+ {
+    text: "Narating ni Don Juan ang Piedras Platas at dahil sa pagkamangha ay muntik<br> nang maka limot sa tagubilin ng leproso. Nagbalik ang diwa niya at nakita ang dampa <br>Nagtungo si Don Juan upang humingi ng tulong sa ermitanyo.",
+    image: "art/AC6/ACtxt8.png"
+  },
+
+ {
+    text: "Laking pagtataka ng prinsipe nang makita sa loob ng dampa ang ibinigay na tinapay sa leproso. Sa kabila ng hiwagang nararamdaman ay buong pagtitiwalang nakinig ang <br>prinsipe sa payo ng ermitanyo. Natuklasan niya na ang Ibong Adarna <br>ay isang engkantado.",
+    image: "art/AC6/ACtxt9.png"
+  },
+
+ {
+    text: "“Ibong ito kung dumating hatinggabi nang malalim ang pagkantang malalambing katahimikan kung gawin. “",
+    image: "art/AC6/ACtxt10.png"
+  },
+
+{
+    text: "“ Pitong awit na maganda pito rin at iba't iba sa balahibo't itsurang ilalabas ng Adarna.“",
+    image: "art/AC6/ACtxt11.png"
+  },
+
+{
+    text: "“Sa oras na umawit ang ibon ay kailangan niyang hiwain ang palad at<BR> pigaan ng dayap upang malabanan ang antok.“",
+    image: "art/AC6/ACtxt12.png"
+  },
+{
+    text: "Bago matulog ang ibon ay dudumi ito at kailangang maiwasan niya iyo upang hindi maging bato. Ibinigay ng ermitanyo ang sintas na ginto par magamit niyang panghuli at <br>panggapos sa ibon. “Dalhin mo rin itong sintas pagkaginto ay matingkad, itali mo pagkahawak sa Adarnang mag-aalpas.“",
+    image: "art/AC6/ACtxt13.png"
+  },          
+
+ {
+    text: "“Kaya, bunso, hayo ka na't ang gabi'y lalalimin ka, <br>ito'y oras na talaga nang pagdating ng Adarna.“",
+    image: "art/AC6/ACtxt14.png"
+  }
+
+]
+ 
+
+
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "AC7.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>
