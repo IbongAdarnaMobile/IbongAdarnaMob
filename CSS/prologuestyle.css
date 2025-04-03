@@ -86,7 +86,7 @@ font-size: 40px;
         .forwardbutton {
             position: absolute;
             right: 5%;
-            bottom: 10%;
+            bottom: 20%;
             font-size: 2rem;
             color: white;
             cursor: pointer;
