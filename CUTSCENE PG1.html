@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palarong Epiko: Ibong Adarna</title>
+    <!-- Link to external CSS -->
     <link rel="stylesheet" href="CSS/prologuestyle.css">
 </head>
-<body width="1620px"height="720px">
+<body>
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/02.mp3" type="audio/mpeg">
@@ -19,15 +22,20 @@
     <button id="muteButton">Mute</button>
 
     <div class="container">
+        <!-- Image container -->
         <img class="img1" id="image" src="art/AC1/ACtxt11.png" alt="Scene Image">
+
+        <!-- Narrative Box -->
         <div class="rectangle">
             <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
-  
-
         </div>
-                  <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
-                <rect width="100%" height="120%" rx="20" ry="20" fill="#9A7B4F"/>
-            </svg>
+
+        <!-- SVG Background -->
+        <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+            <rect width="100%" height="120%" rx="20" ry="20" fill="#9A7B4F"/>
+        </svg>
+
+        <!-- Forward Button -->
         <div class="forwardbutton" id="forwardbutton"> > </div>
     </div>
 
@@ -41,11 +49,11 @@
             const imageBox = document.getElementById("image");
 
             const content = [
-            { text: "Sa Mapayapang kaharian ng Berbanya...", image: "ART/AC1/ACtxt11.webp" },
+                { text: "Sa Mapayapang kaharian ng Berbanya...", image: "ART/AC1/ACtxt11.webp" },
                 { text: "May isang hari hinahangaan ng lahat, pangalan ng haring ito ay mabunying Don Fernando, sa iba mang mga reyno ay tinitingnang maginoo.", image: "ART/AC1/ACtxt12.webp" },
                 { text: "Ang kapilas ng puso niya ay si Donya Valeriana.<br>Ganda ay walang pangalawa at sa bait ay uliran pa.", image: "ART/AC1/ACtxt14.webp" },
                 { text: "Sila ay may tatlong anak.<br>Si Don Pedro ang panganay may tindig na pagkainam", image: "ART/AC1/ACtxt15.webp" },
-                { text: "Gulang nito ay sinundan ni Don Diegong malumanay." , image: "ART/AC1/ACtxt16.png"} , 
+                { text: "Gulang nito ay sinundan ni Don Diegong malumanay.", image: "ART/AC1/ACtxt16.png" }, 
                 { text: "Ang pangatlo ay ang bunso na si Don Juan ang puso,<br>sultang kahit na mapugto ay puso ring pagsuyo.", image: "ART/AC1/ACtxt17.webp" },
                 { text: "Tinawag ng Hari ang tatlong prinsipe", image: "ART/AC1/ACtxt13.png" },
                 { text: "'Kayong tatlo ay mapapalad angkin ninyo ang mataas na pangalang mga pantas.<br>Pumili kayo sa dalawa: magpari o magkorona'", image: "ART/AC1/ACtxt12.webp" },
