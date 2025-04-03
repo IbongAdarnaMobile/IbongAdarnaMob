@@ -39,12 +39,12 @@
             font-size: 1.5rem;
             border-radius: 10px;
             position: absolute;
-            bottom: 18%;
+            bottom: 5%;
             left: 50%;
             transform: translateX(-50%);
         }
         .background-rect {
-            position: relative;
+            position: absolute;
             top: -2%;
             left: -1%;
             z-index: -1; /* Puts it behind the image */
@@ -86,7 +86,7 @@ font-size: 40px;
         .forwardbutton {
             position: absolute;
             right: 5%;
-            bottom: 20%;
+            bottom: 10%;
             font-size: 2rem;
             color: white;
             cursor: pointer;
