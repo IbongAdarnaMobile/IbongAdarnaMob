@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Palarong Epiko: Ibong Adarna</title>
-    <!-- Link to external CSS -->
     <link rel="stylesheet" href="CSS/prologuestyle.css">
 </head>
-<body>
+<body width="1620px"height="720px">
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/02.mp3" type="audio/mpeg">
@@ -22,24 +19,16 @@
     <button id="muteButton">Mute</button>
 
     <div class="container">
-        <!-- Image container -->
         <img class="img1" id="image" src="art/AC1/ACtxt11.png" alt="Scene Image">
-
-        <!-- Narrative Box -->
         <div class="rectangle">
             <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
+  
+
         </div>
-
-        <!-- SVG Background -->
-        <svg style="            position: relative;
-            top: -2%;
-            left: -1%;
-            z-index: -1; /* Puts it behind the image */ " width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
-            <rect width="100%" height="85%" rx="20" ry="20" fill="#9A7B4F"/>
-        </svg>
-
-        <!-- Forward Button -->
-        <div class="forwardbutton" id="forwardbutton"> > </div> 
+                  <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+                <rect width="100%" height="120%" rx="20" ry="20" fill="#9A7B4F"/>
+            </svg>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
     </div>
 
     <script>
@@ -52,23 +41,23 @@
             const imageBox = document.getElementById("image");
 
             const content = [
-                { text: "Sa Mapayapang kaharian ng Berbanya...", image: "ART/AC1/ACtxt11.webp" },
-                { text: "May isang hari hinahangaan ng lahat, pangalan ng haring ito ay mabunying Don Fernando, sa iba mang mga reyno ay tinitingnang maginoo.", image: "ART/AC1/ACtxt12.webp" },
-                { text: "Ang kapilas ng puso niya ay si Donya Valeriana.<br>Ganda ay walang pangalawa at sa bait ay uliran pa.", image: "ART/AC1/ACtxt14.webp" },
-                { text: "Sila ay may tatlong anak.<br>Si Don Pedro ang panganay may tindig na pagkainam", image: "ART/AC1/ACtxt15.webp" },
-                { text: "Gulang nito ay sinundan ni Don Diegong malumanay.", image: "ART/AC1/ACtxt16.png" }, 
-                { text: "Ang pangatlo ay ang bunso na si Don Juan ang puso,<br>sultang kahit na mapugto ay puso ring pagsuyo.", image: "ART/AC1/ACtxt17.webp" },
+            { text: "Sa Mapayapang kaharian ng Berbanya...", image: "ART/AC1/ACtxt11.png" },
+                { text: "May isang hari hinahangaan ng lahat, pangalan ng haring ito ay mabunying Don Fernando, sa iba mang mga reyno ay tinitingnang maginoo.", image: "ART/AC1/ACtxt12.png" },
+                { text: "Ang kapilas ng puso niya ay si Donya Valeriana.<br>Ganda ay walang pangalawa at sa bait ay uliran pa.", image: "ART/AC1/ACtxt14.png" },
+                { text: "Sila ay may tatlong anak.<br>Si Don Pedro ang panganay may tindig na pagkainam", image: "ART/AC1/ACtxt15.png" },
+                { text: "Gulang nito ay sinundan ni Don Diegong malumanay." , image: "ART/AC1/ACtxt16.png"} , 
+                { text: "Ang pangatlo ay ang bunso na si Don Juan ang puso,<br>sultang kahit na mapugto ay puso ring pagsuyo.", image: "ART/AC1/ACtxt17.png" },
                 { text: "Tinawag ng Hari ang tatlong prinsipe", image: "ART/AC1/ACtxt13.png" },
-                { text: "'Kayong tatlo ay mapapalad angkin ninyo ang mataas na pangalang mga pantas.<br>Pumili kayo sa dalawa: magpari o magkorona'", image: "ART/AC1/ACtxt12.webp" },
+                { text: "'Kayong tatlo ay mapapalad angkin ninyo ang mataas na pangalang mga pantas.<br>Pumili kayo sa dalawa: magpari o magkorona'", image: "ART/AC1/ACtxt12.png" },
                 { text: "'Tugon nilang malumanay sa magandang katanungan <br>'humawak ng kaharian bayan namin paglingkuran'", image: "ART/AC1/ACtxt13.png" },
-                { text: "Alam ng mga prinsipe na kahit parehas sila na <br>likas sa galing at talino o nasanay humawak ng sandata, <br>pagkarating ng panahon isa lamang ang maaring makamit ng trono. ", image: "ART/AC1/ACtxt13.webp" },
+                { text: "Alam ng mga prinsipe na kahit parehas sila na <br>likas sa galing at talino o nasanay humawak ng sandata, <br>pagkarating ng panahon isa lamang ang maaring makamit ng trono. ", image: "ART/AC1/ACtxt13.png" },
                 { text: "Hindi rin maitatwa ng hari na ang paborito niyang anak ay ang busong si Don Juan.", image: "ART/AC1/ACtxt18.png" },
                 { text: "Namayani ang inggit sa puso ni Don Pedro.", image: "ART/AC1/ACtxt19.png" },
-                { text: "Nasailalalim ng malubhang karamdaman si haring Don Fernando dulot ng isang masamang panaginip, nakita ng hari na pinaslang si Don juan ng dalawang buhong at inihulog sa malalim na balon.", image: "ART/AC1/ACtxt20.webp" },
+                { text: "Nasailalalim ng malubhang karamdaman si haring Don Fernando dulot ng isang masamang panaginip, nakita ng hari na pinaslang si Don juan ng dalawang buhong at inihulog sa malalim na balon.", image: "ART/AC1/ACtxt20.png" },
                 { text: "Mula noon hindi na makatulog ang hari...", image: "ART/AC1/ACtxt20.png" },
-                { text: "'Sakit ninyo, Haring mahal ay bunga ng panagimpan, mabigat man at maselan, ang tanging lunas ay ang awit ng isang ibong maganda,<br> ang pangalan ay adarna pag narinig ang kanta sakit ay giginhawa'", image: "ART/AC1/ACtxt21.webp" },
-                { text: "'Ibong ito ay matatagpuan sa bundok Tabor at nakadapo sa kumikinang na puno ng Piedras Platas.<br> Sa gabi lamang matatagpuan ang ibon sapagkat sa umaga ay nasa mga burol upang manginain kasama ang iba pang mga ibon'", image: "ART/AC1/ACtxt21.webp" },
-                { text: "Noon din inutusan ng hari ang panganay niyang anak na hanapin at hulihin ang Ibong Adarna.", image: "ART/AC1/ACtxt22.webp" }
+                { text: "'Sakit ninyo, Haring mahal ay bunga ng panagimpan, mabigat man at maselan, ang tanging lunas ay ang awit ng isang ibong maganda,<br> ang pangalan ay adarna pag narinig ang kanta sakit ay giginhawa'", image: "ART/AC1/ACtxt21.png" },
+                { text: "'Ibong ito ay matatagpuan sa bundok Tabor at nakadapo sa kumikinang na puno ng Piedras Platas.<br> Sa gabi lamang matatagpuan ang ibon sapagkat sa umaga ay nasa mga burol upang manginain kasama ang iba pang mga ibon'", image: "ART/AC1/ACtxt21.png" },
+                { text: "Noon din inutusan ng hari ang panganay niyang anak na hanapin at hulihin ang Ibong Adarna.", image: "ART/AC1/ACtxt22.png" }
             ];
 
             let index = 0;
