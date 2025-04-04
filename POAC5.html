@@ -1,0 +1,129 @@
+<html><head> <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
+  const hoverSfx = document.getElementById('hoverSfx');
+  const clickSfx = document.getElementById('clickSfx');
+  const muteButton = document.getElementById('muteButton');
+  const interactiveElements = document.querySelectorAll('a, button,.forwardbutton');
+
+  // Ensure autoplay works
+  audioElement.addEventListener('canplaythrough', () => {
+      console.log('Audio is ready to play without buffering.');
+      audioElement.play();
+  });
+
+  // Handle cases where autoplay might be blocked
+  document.addEventListener('click', () => {
+      if (audioElement.paused) {
+          audioElement.play();
+      }
+  });
+
+  // Mute Button Toggle
+  muteButton.addEventListener('click', () => {
+      if (audioElement.muted) {
+          audioElement.muted = false;
+          muteButton.textContent = 'Mute';
+      } else {
+          audioElement.muted = true;
+          muteButton.textContent = 'Unmute';
+      }
+  });
+
+  // Add hover and click sound effects
+  interactiveElements.forEach(element => {
+      element.addEventListener('mouseenter', () => {
+          hoverSfx.currentTime = 0;
+          hoverSfx.play();
+      });
+
+      element.addEventListener('click', () => {
+          clickSfx.currentTime = 0;
+          clickSfx.play();
+      });
+  });
+  
+})</script>
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+    <script>document.addEventListener("DOMContentLoaded", function() {
+        const forwardbutton = document.getElementById("forwardbutton");
+
+        forwardbutton.addEventListener("click", nxtText);
+
+        function nxtText(event) {
+          var textBox = document.getElementById("narative");
+          var imageBox = document.getElementById("image");
+
+          // Map for text and image pairs
+          const content = {
+            "txt1": {
+              text: "Apat na buwan siyang naglakbay at tumitigas na ang natira niyang tinapay Narating ni Don Juan ang kapatagang bahagi ng Bundok Tabor. Doon ay natagpuan niyaang isang leprosong matandang lalaki",
+              image: "art/PREACT5/ACtxt2.png"
+            },
+                
+          
+          };
+
+          // Update the text and image based on the current class
+          const currentClass = textBox.className;
+          if (content[currentClass]) {
+            textBox.innerHTML = content[currentClass].text;
+            imageBox.src = content[currentClass].image;
+          }
+
+          // Handle class swapping
+          switch (currentClass) {
+            case "txt1":
+              swapClasses(textBox, "txt2");
+              break;
+            case "txt2": 
+forwardbutton.innerHTML = '<a href="AC6.html">></a>';
+              break;
+          }
+        }
+
+        function swapClasses(elem, targetClass) {
+          elem.className = targetClass;
+        }
+      });</script><style type="text/css" id="operaUserStyle"></style>
+<style type="text/css"></style><style>
+      body.shimeji-pinned iframe {
+        pointer-events: none;
+      }
+      body.shimeji-select-ie {
+        cursor: cell !important;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar {
+        width: 6px;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar-thumb {
+        background-color: rgba(30,30,30,0.6);
+        border-radius: 3px;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style><meta name="shimejiBrowserExtensionId" content="gohjpllcolmccldfdggmamodembldgpc" data-version="2.0.5"></head>
+<body style="    background-color:#6ac1ff;">  <audio id="audioElement" autoplay="" loop="">
+  <source src="mus/05.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Sound Effects -->
+<audio id="clickSfx">
+  <source src="sfx/nxt.wav" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+    
+    <div class="container">
+      <div>    
+        <button id="muteButton">Mute</button>
+    </div>
+<img src="art/PREACT5/ACtxt1.png" width="1350px" height="720px">
+
+    <div class="rectangle" style="z-index:2;">
+        <p id="narative" class="txt1"> Nagbaon siya ng limang tinapay at isang beses kada buwan lang siya kumakain, hindi niya alintana ang anumang gutom, pagod at hirap na dinadaranas. </p>
+    </div>
+    <svg class="background-rect" width="102%" height="750px" viewBox="0 0 1200 675" preserveAspectRatio="none">
+      <rect width="100%" height="120%" rx="20" ry="20" fill="#bee4ff"></rect>
+  </svg>
+    <div id="forwardbutton" class="forwardbutton" style="z-index:3;"> &gt; </div>
+</div>
