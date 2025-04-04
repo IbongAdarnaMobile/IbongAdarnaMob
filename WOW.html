@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>End Screen</title>
+    <link rel="stylesheet" href="CSS/HLPP.css">
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const hoverSfx = document.getElementById('hoverSfx');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const interactiveElements = document.querySelectorAll('a, button, div');
+
+            // Ensure autoplay works
+            audioElement.addEventListener('canplaythrough', () => {
+                audioElement.play();
+            });
+
+            // Handle cases where autoplay might be blocked
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute Button Toggle
+            muteButton?.addEventListener('click', () => {
+                if (audioElement.muted) {
+                    audioElement.muted = false;
+                    muteButton.textContent = 'Mute';
+                } else {
+                    audioElement.muted = true;
+                    muteButton.textContent = 'Unmute';
+                }
+            });
+
+            // Add hover and click sound effects
+            interactiveElements.forEach(element => {
+                element.addEventListener('mouseenter', () => {
+                    hoverSfx.currentTime = 0;
+                    hoverSfx.play();
+                });
+
+                element.addEventListener('click', () => {
+                    clickSfx.currentTime = 0;
+                    clickSfx.play();
+                });
+            });
+        });
+    </script>
+
+    <style>
+        @font-face {
+            font-family: genshin;
+            src: url(zh-cn.ttf);
+        }
+        @font-face {
+            font-family: dialogue;
+            src: url(CookieRunRegular.otf);
+        }
+
+        /* Background and layout */
+        body {
+            background-color: #4A3728;
+            margin: 0;
+            font-family: genshin, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 1200px;
+            padding: 20px;
+            background: #fdd6a6;
+            border-radius: 12px;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .rectangle {
+            width: 90%;
+            max-width: 1000px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            font-size: 2rem;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+
+        .rectangle h1 {
+            font-family: dialogue;
+            margin: 0;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin: 15px auto 0;
+        }
+
+        .buttons a {
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-family: dialogue;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: 0.3s;
+            border: 2px solid #9A7B4F;
+        }
+
+        .buttons a:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .forwardbutton {
+            position: absolute;
+            right: 5%;
+            bottom: 10%;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .rectangle {
+                font-size: 1.5rem;
+                padding: 15px;
+                position: relative;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .buttons a {
+                font-size: 1.2rem;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/END.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Sound Effects -->
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <div class="image-container">
+            <img id="image" src="art/AC12/ACtxt12.png" alt="End Scene">
+        </div>
+
+        <div class="rectangle">
+            <h1>Sa sumusunod...</h1>
+            <div class="buttons">
+                <a href="TITLE.html">BALIK</a>
+                <a href="GLOSSARY.html">GLOSSARY</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
