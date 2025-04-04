@@ -1,5 +1,4 @@
-<!DOCTYPE html style="zoom:67%;">
-<head>
+<html><head>
     <link rel="stylesheet" href="CSS/prologuestyle.css">
     <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
         const hoverSfx = document.getElementById('hoverSfx');
@@ -46,13 +45,30 @@
         
       })</script>
 
-</head>
+<style type="text/css" id="operaUserStyle"></style><style type="text/css"></style><style>
+      body.shimeji-pinned iframe {
+        pointer-events: none;
+      }
+      body.shimeji-select-ie {
+        cursor: cell !important;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar {
+        width: 6px;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar-thumb {
+        background-color: rgba(30,30,30,0.6);
+        border-radius: 3px;
+      }
+      #shimeji-contextMenu::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+    </style><meta name="shimejiBrowserExtensionId" content="gohjpllcolmccldfdggmamodembldgpc" data-version="2.0.5"></head>
 <body style="    background-color:#6194d9;">  <div style=" position: absolute;
     padding: 20px;
     left: 12%;
     bottom: 85.5%;
     color: #4f639a;">    
-      <button id="muteButton"style=" padding: 10px 20px;
+      <button id="muteButton" style=" padding: 10px 20px;
       font-family: genshin;
       font-size: 20px;
       color: #ffffff;
@@ -62,7 +78,7 @@
       cursor: pointer;
       text-shadow: 1px 1px 0 #4f569a;">Mute</button>
   </div>
-<audio id="audioElement" autoplay loop>
+<audio id="audioElement" autoplay="" loop="">
   <source src="mus/choice.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -72,21 +88,61 @@
   <source src="sfx/nxt.wav" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-    <div class ="container" style=" background-color:  #a6d4fd;">
+    <div class="container" style=" background-color:  #a6d4fd;">
 <div>
 
-<IMG class="img1" id="image" src="art/ACtxt1.png" width="850" height="500">
+<img src="art/ACtxt1.png" style="position:relative;" width="1250" height="800">
 
 </div>  
+<div style="position: absolute;bottom: 19%;width: 100%;">
         <div class="rectangle">
          
-            <p class = "narative"> </p> <P class="truthlessrecluse" style="z-index: 2;">Pumili ng direksyon</P>
+            <p class="narative"> </p> <p class="truthlessrecluse" style="z-index: 2;">Pumili ng direksyon</p>
             <a href="malinis.html">
             <button class="GAY">Malinis na daan</button> </a> <a href="mabangin.html">
             <button class="GAY">Mabangin na daan</button>
         </a>
+    </div>
         </div>
       
     </div>
-    </body>
-    </html>
+    <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+    <div id="shimeji-workArea" style="position: fixed; background: transparent; z-index: 2147483643; width: 100vw; height: 100vh; left: 0px; top: 0px; transform: translate(0px, 0px); pointer-events: none;"></div></body></html>
