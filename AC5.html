@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/prologuestyle.css">
 </head>
-<body style="    background-color:#f3bf31;">
+<body style="    background-color:#f3bf31;"width="1620px"height="720px">
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/05.mp3" type="audio/mpeg">
@@ -21,8 +21,13 @@
     <div class="container">
         <img class="img1" id="image" src="art/AC5/ACtxt1.png" alt="Scene Image">
         <div class="rectangle">
-            <p id="narative" class="txt1"> Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari na utusan si don juan upang hanapin ang dalawa niyang kapatid at ang ibong adarna</p>
+            <p id="narative" class="txt1"> Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari na utusan si don juan upang hanapin ang dalawa niyang kapatid at<br> ang ibong adarna</p>
+
         </div>
+        
+        <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+            <rect width="100%" height="120%" rx="20" ry="20" fill="#ffff9b"/>
+        </svg>
         <div class="forwardbutton" id="forwardbutton"> > </div>
     </div>
 
@@ -38,17 +43,17 @@
             const content = [
 
 {
-    text:  " Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari n utusan si don juan upang hanapin ang dalawa niyang kapatid at ang ibong adarna",
+    text:  " Tatlong taon na lumipas at lalong lumalala ang kalagayan ni haring fernando. Nag aatubili ang hari n utusan si don juan upang hanapin ang dalawa niyang kapatid at<br> ang ibong adarna",
     image: "art/AC5/ACtxt1.png"
   },
 
 {
     text:  "Nagaalala siyang bakaapahamak ang bunsong anak. Humingi ng bendisyon si don juan upang payagan siyang maglakbay, sa takot ng hari baka maisipan ni don juan na magtanan ay pinahintulutan niya ito.",
-    image: "art/AC4/ACtxt2.png"
+    image: "art/AC5/ACtxt2.png"
   },
 {
-    text: "Hindi nagdala ng kabayo si don juan at siya ay naglakad dahil na niniwala siya na ang matapat na layunin ang magbibigay sakaniya ng biyaya.",
-    image: "art/AC4/ACtxt3.png"
+    text: "Hindi nagdala ng kabayo si don juan at siya ay naglakad dahil na niniwala siya na<br> ang matapat na layunin ang magbibigay sakaniya ng biyaya.",
+    image: "art/AC5/ACtxt3.png"
   }
 
 ]
@@ -80,7 +85,7 @@
                     imageBox.src = content[index].image;
                 } else {
                     // Redirect to hangman.html when all content is shown
-                    window.location.href = "hangman.html";
+                    window.location.href = "FOREST GAME.html";
                 }
             }
 
