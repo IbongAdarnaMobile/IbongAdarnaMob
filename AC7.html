@@ -65,7 +65,7 @@
         .container {
             z-index: 0;
             width: 1450px;
-    height: 700px;
+    height: 570px;
         background: white;
         display: flex;
         padding: 60px 40px;
@@ -74,16 +74,15 @@
         justify-content: absolute;
 }
 
-        .rectangle {
-        
-            border-radius: 12px;
-    display: flex;
+        .rectangle 
+            {
+    border-radius: 12px;
+    display: flex
+;
     position: absolute;
     bottom: 8%;
-    left: 11.5%;
-    height:300px;
-    width:1470px;
-    background-color: rgb(0, 0, 0);
+    height: 200px;
+    width: 1450px;
         }
 
         .dialogue2 {
@@ -191,11 +190,11 @@
             font-size: 14px;
             color: red;
         }
-        #dialogueImage{
-            z-index: 1;
-            position: absolute;
-            left: 530px;
-            top: 10%;
+        #dialogueImage {
+    z-index: 1;
+    position: absolute;
+    left: 50px;
+    top: 4%;
         }
         @font-face {
             font-family: genshin;
@@ -235,28 +234,29 @@
         Your browser does not support the audio element.
     </audio>
 <div class="container">
-    <div style=" position: absolute;
-      padding: 20px;
-      left: 12%;
-      bottom: 85.5%;
-      color: #bd6920;">    
+    <div style="  position: absolute;
+    padding: 20px;
+    z-index: 3;
+    left: 3%;
+    bottom: 85.5%;
+    color: #bd6920;">    
         <button id="muteButton"style=" padding: 10px 20px;
         font-family: genshin;
         font-size: 20px;
         color: #ffffff;
-        background-color:#bc6c2e;
+        background-color:#0000006b;
         border: 2px solid #9A7B4F;
         border-radius: 5px;
         cursor: pointer;
         text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
     </div>
-    <div class="rectangle" style="z-index: 2; background-color: #4f0901;">
+    <div class="rectangle" style="z-index: 2; background-color: #4f0901bf;">
         <p class="dialogue2" id="dialogueText">
             
         </p>
         <button id="nextButton" class="forwardbutton"> > </button> <!-- Button is placed outside the paragraph -->
     </div>
-    <img id="dialogueImage"   width="850" height="520">
+    <img id="dialogueImage"height="680" width="1520 " >
 </div>
 
 <!-- Modals -->
