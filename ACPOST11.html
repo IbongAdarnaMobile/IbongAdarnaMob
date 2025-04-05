@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/prologuestyle.css">
 </head>
-<body>
+<body style="background-color: #389a71;">
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/11.mp3" type="audio/mpeg">
@@ -23,6 +23,125 @@
         <div class="rectangle">
             <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
         </div>
+        <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+            <rect width="100%" height="120%" rx="20" ry="20" fill="#a7ffda"/>
+        </svg>
+        <div class="forwardbutton" id="forwardbutton"> > </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const audioElement = document.getElementById('audioElement');
+            const clickSfx = document.getElementById('clickSfx');
+            const muteButton = document.getElementById('muteButton');
+            const forwardButton = document.getElementById("forwardbutton");
+            const textBox = document.getElementById("narative");
+            const imageBox = document.getElementById("image");
+
+            const content = [
+          
+
+            {
+  text: " Sa ikalawang pagkakataon ay muling ginamot ng matanda ang sugat ni Don Juan. <br>Sa isang iglap ay biglang naglaho ang mga sugat sa katawan ng prinsipe.",
+  image: "art/AC11/ACtxt2.png"
+},
+
+{
+  text: "Namangha muli si Don Juan sa isang pang himala na nasaksihan niya.<br> Niyakap nito ang matandang ermitanyo tanda ng kaniyang pagpapasalamat <br>dahil sa pagliligtas sa kaniyang buhay.",
+  image: "art/AC11/ACtxt2.png"
+},
+
+ {
+  text: "“Don Juan di ko hangad tapusin ang paguusap, ngunit nasa iyong hagap <br>ang ama mong nililiyag.“",
+  image: "art/AC11/ACtxt3.png"
+},
+
+ {
+  text: "“Malaon nang naiinip sa hindi mo pagbabalik, karamdama ay lumalawig, baka di na makatawid“.",
+  image: "art/AC11/ACtxt3.png"
+},
+
+ {
+  text: "“Kaya nga magmadali ka nang pag-uwi sa Berbanya, ikaw lamang <br>ang lagi nang pangarap ng iyong ama.“",
+  image: "art/AC11/ACtxt4.png"
+},
+
+ {
+  text: "“Sa tulin ng kanyang lakad wari'y ibong lumilipad, nasa sa sandaling oras sapitin ang bayang liyag. Abutan pa niyang buhay ang amang may karamdaman<br> inang nasa kapanglawa maaliw ng pagmamahal.“ ",
+  image: "art/AC11/ACtxt5.png"
+}
+            ];
+
+            let index = 0;
+
+            // Initialize first content
+            textBox.innerHTML = content[index].text;
+            imageBox.src = content[index].image;
+
+            // Play background music on first click anywhere
+            document.addEventListener('click', () => {
+                if (audioElement.paused) {
+                    audioElement.play();
+                }
+            });
+
+            // Mute/unmute button
+            muteButton.addEventListener('click', () => {
+                audioElement.muted = !audioElement.muted;
+                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
+            });
+
+            // Function to show next text and image
+            function nxtText() {
+                if (index < content.length - 1) {
+                    index++;
+                    textBox.innerHTML = content[index].text;
+                    imageBox.src = content[index].image;
+                } else {
+                    // Redirect to hangman.html when all content is shown
+                    window.location.href = "AC12.html";
+                }
+            }
+
+            // Click sound effect and next text trigger
+            forwardButton.addEventListener("click", () => {
+                clickSfx.currentTime = 0;
+                clickSfx.play();
+                nxtText();
+            });
+        });
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/prologuestyle.css">
+</head>
+<body style="background-color: #389a71;">
+
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/11.mp3" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio. Sorry.
+    </audio>
+
+    <button id="muteButton">Mute</button>
+
+    <div class="container">
+        <img class="img1" id="image" src="art/AC11/ACtxt2.png" alt="Scene Image">
+        <div class="rectangle">
+            <p id="narative" class="txt1"> Sa Mapayapang kaharian ng Berbanya...</p>
+        </div>
+        <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+            <rect width="100%" height="120%" rx="20" ry="20" fill="#a7ffda"/>
+        </svg>
         <div class="forwardbutton" id="forwardbutton"> > </div>
     </div>
 
