@@ -66,14 +66,13 @@
         border-radius: 10px;
         
 }
-.container{
+.container{height: 95%;
     position: absolute;
-    top: 250px;
-    left: 23%;
-    width: 700px;
-
-        background: white;
-        border-radius: 10px;
+    top: 5%;
+    left: 15%;
+    width: 70%;
+    background: white;
+    border-radius: 10px;
 }
 .container h2{
     font-size: 30px;
@@ -103,13 +102,15 @@
     font-weight: 500;
 }
 .content input{
-    width: 100%;
-    height: 60px;
+    position: absolute;
+    top: 55%;
+    width: 96%;
+    height: 115px;
     outline: none;
     padding: 0 16px;
     border-radius: 5px;
     border: 1px solid #aaa;
-    font-size: 18px;
+    font-size: 35px;
 }
 .content .buttons{
     display: flex;
@@ -240,34 +241,36 @@
       left: 58.5%;
       bottom:  63.9%;
             color: #9A7B4F;">    
-        <button id="muteButton"style=" padding: 10px 20px;
-        font-family: genshin;
-        font-size: 20px;
-        color: #ffffff;
-        background-color: #4A3728;
-        border: 2px solid #9A7B4F;
-        border-radius: 5px;
-        cursor: pointer;
-        text-shadow: 1px 1px 0 #9A7B4F;
-        ">Mute</button>
+ 
     </div>
             <h2 class="title">WORD SCRABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;Score: <span id="score">0</span></h2>
+                &nbsp;Score: <span id="score">0</span>       <button id="muteButton"style="   left: 87%; padding: 10px 20px;
+    position: absolute;
+    left: 87%; padding: 10px 20px;
+          font-family: genshin;
+          font-size: 20px;
+          color: #ffffff;
+          background-color: #4A3728;
+          border: 2px solid #9A7B4F;
+          border-radius: 5px;
+          cursor: pointer;
+          text-shadow: 1px 1px 0 #9A7B4F;
+                ">Mute</button></h2>
             <div class="content">
                 <p class="word"></p>
                 <div class="details">
                     <p class="hint">Hint: <span></span></p>
-                    <p class="time">Time left: <span><b>15</b>s</span></p>
+                    <p class="time">Time left: <span><b>25</b>s</span></p>
                 </div>
                 <input type="text" placeholder="Bumigay ng salita">
-                <div class="buttons">
+                <div class="buttons" style="display: none;">
                     <button class="refresh-word">Refresh Salita</button>
                     <button class="check-word">Check Salita</button>
                 </div>
             </div>
 <div id="modal" class="modal" style="display: none;">
                 <div style="
-position:relative;top:-15%;
+position:relative;top:-22%;
         border-radius: 1%;
         overflow: hidden;
         background-color: #ffead6;
