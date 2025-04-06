@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<head> 
+    <script>  
+           const audioElement = document.getElementById('audioElement');
+    const hoverSfx = document.getElementById('hoverSfx');
+    const clickSfx = document.getElementById('clickSfx');
+    const muteButton = document.getElementById('muteButton');
+    const interactiveElements =document.querySelectorAll('a, button , div , .buttons');
+
+    // Ensure autoplay works
+    audioElement.addEventListener('canplaythrough', () => {
+        console.log('Audio is ready to play without buffering.');
+        audioElement.play();
+    });
+
+    // Handle cases where autoplay might be blocked
+    document.addEventListener('click', () => {
+        if (audioElement.paused) {
+            audioElement.play();
+        }
+    });
+
+    // Mute Button Toggle
+    muteButton.addEventListener('click', () => {
+        if (audioElement.muted) {
+            audioElement.muted = false;
+            muteButton.textContent = 'Mute';
+        } else {
+            audioElement.muted = true;
+            muteButton.textContent = 'Unmute';
+        }
+    });
+
+    // Add hover and click sound effects
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+        });
+
+        element.addEventListener('click', () => {
+            clickSfx.currentTime = 0;
+            clickSfx.play();
+        });
+    });
+    
+</script>
+        <title>Mabangin</title>
+        <style>body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #4A3728;
+}
+.con{
+    width: 1550px;
+    height: 750px;
+        background-image: url("art/mabangin.png" );
+        display: block;
+        background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+   border: 8px solid #9A7B4F;
+        padding: 60px 40px;
+        border-radius: 10px;
+        
+}
+.container{
+    position: absolute;
+    top: 250px;
+    left: 23%;
+    width: 700px;
+
+        background: white;
+        border-radius: 10px;
+}
+.container h2{
+    font-size: 30px;
+    font-weight: 200px;
+    padding: 18px 25px;
+    border-bottom: 1px solid #ccc;
+}
+.container .content{
+    margin: 25px 20px 35px;
+}
+.container .word{
+    font-size: 43px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 24px;
+    margin-right: -24px;
+}
+.content .details{
+    margin: 25px 0 20px;
+}
+.details p{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.details p b{
+    font-weight: 500;
+}
+.content input{
+    width: 100%;
+    height: 60px;
+    outline: none;
+    padding: 0 16px;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    font-size: 18px;
+}
+.content .buttons{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+.buttons button{
+    border:none;
+    outline: none;
+    padding: 15px 0;
+    font-size: 17px;
+    border-radius: 5px;
+    width: calc(100% / 2 - 8px);
+    color: #fff;
+    cursor: pointer;
+}
+.buttons .refresh-word{
+    background: #4A3728;
+}
+.buttons .check-word{
+    background: #4A3728;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:dialogue;
+}
+.back a{
+    position: absolute;
+    top: 13%;
+    font-size: 35px;
+    font-family: genshin;
+    text-decoration: none;
+    color: rgb(24, 24, 158);
+}
+
+@font-face {
+    font-family:genshin;
+    src: url(zh-cn.ttf);
+}
+@font-face {
+    font-family:dialogue;
+    src: url(CookieRunRegular.otf);
+}
+.modal {
+    
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #fefefe;
+    margin: 13% auto; 
+    padding: 10px;
+    border: 1px solid #888;
+    height: 50%;
+    width: 50%; 
+}
+.modal h2 {
+   position: fixed;
+   top: 27%;
+  left: 40%;
+    border-bottom: hidden;
+    font-size: 50px;
+   
+}
+.modal p{
+    position: absolute;
+    top: 37%;
+    left: 43%;
+    font-size: 30px;
+    
+}
+.modal button{
+    position: absolute;
+    top: 65%;
+    left: 43%;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px ;
+   font-size:25px ;
+  
+}
+
+.score{
+    position: absolute;
+    top: 250px;
+    left: 1500px;
+    font-size: 35px;
+    font-family: genshin;
+    text-decoration: none;
+    
+}
+
+
+
+
+
+</style>
+        <script src="words.js" defer></script>
+        <script src="forscript.js" defer></script>
+</head>
+<body>
+    <audio id="audioElement" autoplay loop>
+        <source src="mus/scmblMb.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <!-- Sound Effects -->
+    <audio id="clickSfx">
+        <source src="sfx/nxt.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="con">
+
+    <div class="container">
+        <div style=" position: fixed;
+      padding: 20px;
+      left: 58.5%;
+      bottom:  63.9%;
+            color: #9A7B4F;">    
+        <button id="muteButton"style=" padding: 10px 20px;
+        font-family: genshin;
+        font-size: 20px;
+        color: #ffffff;
+        background-color: #4A3728;
+        border: 2px solid #9A7B4F;
+        border-radius: 5px;
+        cursor: pointer;
+        text-shadow: 1px 1px 0 #9A7B4F;
+        ">Mute</button>
+    </div>
+            <h2 class="title">WORD SCRABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;Score: <span id="score">0</span></h2>
+            <div class="content">
+                <p class="word"></p>
+                <div class="details">
+                    <p class="hint">Hint: <span></span></p>
+                    <p class="time">Time left: <span><b>15</b>s</span></p>
+                </div>
+                <input type="text" placeholder="Bumigay ng salita">
+                <div class="buttons">
+                    <button class="refresh-word">Refresh Salita</button>
+                    <button class="check-word">Check Salita</button>
+                </div>
+            </div>
+<div id="modal" class="modal" style="display: none;">
+                <div style="
+position:relative;top:-15%;
+        border-radius: 1%;
+        overflow: hidden;
+        background-color: #ffead6;
+        margin: 15% auto;
+        padding: 20px;
+        border: 5px solid #2d1b0a;
+        height: 600px;
+        width: 1000px;">
+                    <h2 class="gam" style="   position: relative;
+ top:-10%;  left: 18.5%;
+    border-bottom: hidden;
+    font-size: 120px;">MAHUSAY</h2>
+                    <p style="position: relative;
+    top: -13%;
+    left: 10.5%;
+    font-size: 50px;">Nasagot mo lahat ng mga salita</p>
+                    <button onclick="goToNextPage()" style="  position: relative;
+    top: 10%;
+    left: 35.5%;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px ;
+   font-size:25px ;
+        background-color: #fdd6a6;
+       color:#a35e1f ">Go to Next Page</button>
+                </div>
+            </div>
+         
+            </div>
+    </div>
+
+</body>
+</html>
