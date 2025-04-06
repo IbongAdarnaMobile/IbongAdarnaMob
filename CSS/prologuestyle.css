@@ -31,15 +31,14 @@
         }
 
         .rectangle {
-            width: 100%;
-            max-width: 1200px;
+            width: 50%;
             background: rgba(0, 0, 0, 0.6);
             color: white;
             padding: 15px;
             margin: auto;
             font-size: 1.5rem;
             border-radius: 10px;
-            position: absolute;
+            position: relative;
             bottom: 5%;
             left: 50%;
             transform: translateX(-50%);
