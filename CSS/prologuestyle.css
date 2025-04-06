@@ -18,11 +18,11 @@
       top: 3%;
     left: 2%;
     position: relative;
-    width: 47%;
+    width: 100%;
     max-width: 1350px;
     margin: auto;
     text-align: center;
-    height: 60%;
+    height: 100%;
         }
 
         .img1 {
