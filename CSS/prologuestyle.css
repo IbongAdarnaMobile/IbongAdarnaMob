@@ -44,10 +44,10 @@
             transform: translateX(-50%);
         }
         .background-rect {
-            position: absolute;
+            position: relative;
             top: -2%;
             left: -1%;
-            z-index: -1; /* Puts it behind the image */
+            z-index: -1; 
         }
         
         #muteButton {
