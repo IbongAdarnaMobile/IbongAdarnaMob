@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no">
     <style>
         body {
             display: flex;
@@ -8,6 +8,7 @@
             min-height: 100vh;
             justify-content: center;
             background-color: #4A3728;
+            overflow: hidden;
         }
 
         .container {
@@ -22,6 +23,10 @@
             align-items: center;
             justify-content: center;
             border: 12px solid #2b2018;
+        }
+
+        .potrait {
+            display: none;
         }
 
         .title-text {
@@ -167,6 +172,7 @@
                 bottom: 55%;
                 color: #9A7B4F;
                 text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+                left: 18%;
             }
 
             .hyper-start-2 {
@@ -216,9 +222,12 @@
 
         /* Block portrait mode */
         @media screen and (orientation: portrait) {
-            body {
+            .container {
                 display: none;
             }
+            .potrait {
+            display: flex;
+        }
         }
     </style>
 </head>
@@ -229,6 +238,7 @@
         Your browser does not support the audio element.
     </audio>
 
+    <img class="potrait" src="potrait.webp" alt="gay">
     <!-- Sound Effects -->
     <audio id="hoverSfx">
         <source src="sfx/nxt.wav" type="audio/mpeg">
