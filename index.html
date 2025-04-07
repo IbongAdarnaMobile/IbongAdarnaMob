@@ -1,257 +1,312 @@
 <!doctype html style="zoom: 100%;">
-<head>
-    <style>
-        body {
-
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            background-color: #4A3728;
-        }
-
-        .container {
-        background-image: url(art/tigtle.webp);
-        background-repeat: no-repeat;
-        background-size: cover;
-        display: flex;
-        padding: 60px 40px;
-        border-radius: 10px;
-        align-items: center;
-        justify-content: center;
-        border: 12px solid #2b2018;
-        }
-
-        .title-text {
-            color: #2d1b0a;
-            position: absolute;
-            top: 14%;
-            text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
-           
-            font-family: genshin;
-            text-align: center;
-            padding: 10px;
-            font-size: 35px ;
-        }
-
-        a {
-            font-family: genshin;
-            font-size: 47px;
-            text-align: left;
-            text-decoration: none;
-            color: #573411;
-        }
-
-        @font-face {
-            font-family: genshin;
-            src: url(zh-cn.ttf);
-        }
-
-        .hyper-start-1 {
-        position: relative;
-        padding: 20px;
-        left: 0%;
-        bottom: 55%;
-        color: #9A7B4F;
-        }
-
-        .hyper-start-1:hover {
-        position: relative;
-        padding: 20px;
-        left: 0%;
-        bottom: 55%;
-        color: #9A7B4F;
-            text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
-        }
-        .hyper-start-2 {
-        position: relative;
-        padding: 20px;
-        left: 2%;
-        top: -3%;
-        color: #9A7B4F;
-        }
-        .hyper-start-2:hover {
-        position: relative;
-        padding: 20px;
-        left: 2%;
-        top: -3%;
-        color: #9A7B4F;
-            text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
-        }
-        .hyper-start-3 {
-            position: absolute;
-            padding: 20px;
-            left: 36%;
-            bottom: -5%;
-            color: #9A7B4F;
-        }
-        .mute-button {
-            padding: 10px 20px;
-            font-family: genshin;
-            font-size: 20px;
-            color: #ffffff;
-            background-color: #4A3728;
-            border: 2px solid #9A7B4F;
-            border-radius: 5px;
-            cursor: pointer;
-            text-shadow: 1px 1px 0 #9A7B4F;
-        }
-
-        .hyper-start-4 {
-            position: absolute;
-            padding: 20px;
-            left: 53%;
-            top: 18%;
-        }
-
-        @media screen and (orientation: landscape) {
-            body {
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            background-color: #4A3728;
-        }
-
-
-        .title-text {
-            color: #2d1b0a;
-            position: absolute;
-            top: 30%;
-            text-shadow:3px 3px 0 #ffffff, -3px 3px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff;
-    
-            font-family: genshin;
-            text-align: center;
-            padding: 10px;
-            font-size: 35px ;
-        }
-
-        a {
-            font-family: genshin;
-            font-size: 47px;
-            text-align: left;
-            text-decoration: none;
-            color: #573411;
-        }
-
-        @font-face {
-            font-family: genshin;
-            src: url(zh-cn.ttf);
-        }
-        .mute-button {
-            padding: 10px 20px;
-            font-family: genshin;
-            font-size: 20px;
-            color: #ffffff;
-            background-color: #4A3728;
-            border: 2px solid #9A7B4F;
-            border-radius: 5px;
-            cursor: pointer;
-            text-shadow: 1px 1px 0 #9A7B4F;
-        }
-
-        .hyper-start-4 {
-            position: absolute;
-            padding: 20px;
-            left: 53%;
-            top: 18%;
-        }
-  .nav {
-    display: none; /* Hide navigation on small screens */
-  }
-
-  /* Any other styles for mobile */
-  .mobile-friendly {
-    display: block;
-  }
-}
-
-
-
-
-    </style>
-</head>
-
-<body> <center>
-    <audio id="audioElement" autoplay loop>
-        <source src="mus/01.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <!-- Sound Effects -->
-    <audio id="hoverSfx">
-        <source src="sfx/nxt.wav" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <audio id="clickSfx">
-        <source src="sfx/nxt.wav" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="container">
-        <div class="title-text">
-            <h1> PALARONG EPIKO: IBONG ADARNA </h1>
-        </div>
-        <div style="top:30%;position:relative; width: 33%; height:40%; background-color:#9A7B4F; border: 8px solid #4A3728;">
-            <div>
-                <div class="hyper-start-1">
-                    <a href="CUTSCENE PG1.html">START GAME</a>
-                </div>
-
-                <div class="hyper-start-2">
-                    <a href="CREDITS.html">CREDITS</a>
-                </div>
-                <div class="hyper-start-3">    
-                    <button id="muteButton" class="mute-button">Mute</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
-        const hoverSfx = document.getElementById('hoverSfx');
-        const clickSfx = document.getElementById('clickSfx');
-        const muteButton = document.getElementById('muteButton');
-        const interactiveElements = document.querySelectorAll('a, button,div,.forwardbutton');
-      
-        // Ensure autoplay works
-        audioElement.addEventListener('canplaythrough', () => {
-            console.log('Audio is ready to play without buffering.');
-            audioElement.play();
-        });
-      
-        // Handle cases where autoplay might be blocked
-        document.addEventListener('click', () => {
-            if (audioElement.paused) {
-                audioElement.play();
-            }
-        });
-      
-        // Mute Button Toggle
-        muteButton.addEventListener('click', () => {
-            if (audioElement.muted) {
-                audioElement.muted = false;
-                muteButton.textContent = 'Mute';
-            } else {
-                audioElement.muted = true;
-                muteButton.textContent = 'Unmute';
-            }
-        });
-      
-        // Add hover and click sound effects
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                hoverSfx.currentTime = 0;
-                hoverSfx.play();
-            });
-      
-            element.addEventListener('click', () => {
-                clickSfx.currentTime = 0;
-                clickSfx.play();
-            });
-        });
-        
-      })</script>
-        
-</body>
-</html>
+ <head>
+     <style>
+         body {
+ 
+             display: flex;
+             align-items: center;
+             min-height: 100vh;
+             justify-content: center;
+             background-color: #4A3728;
+         }
+ 
+         .container {
+         width: 1150px;
+         height: 550px;
+         background-image: url(art/tigtle.webp);
+         background-repeat: no-repeat;
+         background-size: cover;
+         display: flex;
+         padding: 60px 40px;
+         border-radius: 10px;
+         align-items: center;
+         justify-content: center;
+         border: 12px solid #2b2018;
+         }
+ 
+         .title-text {
+             color: #2d1b0a;
+             position: absolute;
+             top: 14%;
+             text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+ 
+             font-family: genshin;
+             text-align: center;
+             padding: 10px;
+             font-size: 35px ;
+         }
+ 
+         a {
+             font-family: genshin;
+             font-size: 47px;
+             text-align: left;
+             text-decoration: none;
+             color: #573411;
+         }
+ 
+         @font-face {
+             font-family: genshin;
+             src: url(zh-cn.ttf);
+         }
+ 
+         .hyper-start-1 {
+         position: relative;
+         padding: 20px;
+         left: 0%;
+         bottom: 55%;
+         color: #9A7B4F;
+         }
+ 
+         .hyper-start-1:hover {
+         position: relative;
+         padding: 20px;
+         left: 0%;
+         bottom: 55%;
+         color: #9A7B4F;
+             text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+         }
+         .hyper-start-2 {
+         position: relative;
+         padding: 20px;
+         left: 2%;
+         top: -3%;
+         color: #9A7B4F;
+         }
+         .hyper-start-2:hover {
+         position: relative;
+         padding: 20px;
+         left: 2%;
+         top: -3%;
+         color: #9A7B4F;
+             text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+         }
+         .hyper-start-3 {
+             position: absolute;
+             padding: 20px;
+             left: 36%;
+             bottom: -5%;
+             color: #9A7B4F;
+         }
+         .mute-button {
+             padding: 10px 20px;
+             font-family: genshin;
+             font-size: 20px;
+             color: #ffffff;
+             background-color: #4A3728;
+             border: 2px solid #9A7B4F;
+             border-radius: 5px;
+             cursor: pointer;
+             text-shadow: 1px 1px 0 #9A7B4F;
+         }
+ 
+         .hyper-start-4 {
+             position: absolute;
+             padding: 20px;
+             left: 53%;
+             top: 18%;
+         }
+ 
+         @media screen and (orientation: landscape) {
+             body {
+             display: flex;
+             align-items: center;
+             min-height: 100vh;
+             justify-content: center;
+             background-color: #4A3728;
+         }
+ 
+         .container {
+             width: 1450px;
+             height: 550px;
+             background-image: url(art/tigtle.webp);
+             background-repeat: no-repeat;
+             background-size: cover;
+             display: flex;
+             padding: 60px 40px;
+             border-radius: 10px;
+             align-items: center;
+             justify-content: center;
+             border: 12px solid #2b2018;
+         }
+ 
+         .title-text {
+             color: #2d1b0a;
+             position: absolute;
+             top: 30%;
+             text-shadow:3px 3px 0 #ffffff, -3px 3px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff;
+ 
+             font-family: genshin;
+             text-align: center;
+             padding: 10px;
+             font-size: 35px ;
+         }
+ 
+         a {
+             font-family: genshin;
+             font-size: 47px;
+             text-align: left;
+             text-decoration: none;
+             color: #573411;
+         }
+ 
+         @font-face {
+             font-family: genshin;
+             src: url(zh-cn.ttf);
+         }
+ 
+         .hyper-start-1 {
+             position: absolute;
+             padding: 20px;
+             left: 10%;
+             bottom: 55%;
+             color: #9A7B4F;
+         }
+ 
+         .hyper-start-1:hover {
+             position: absolute;
+             padding: 20px;
+             left: 10%;
+             bottom: 55%;
+             color: #9A7B4F;
+             text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+             left: 18%;
+         }
+         .hyper-start-2 {
+             position: absolute;
+             padding: 20px;
+             left: 23%;
+             bottom: 20%;
+             color: #9A7B4F;
+         }
+         .hyper-start-2:hover {
+             position: absolute;
+             padding: 20px;
+             left: 23%;
+             bottom: 20%;
+             color: #9A7B4F;
+             text-shadow: 5px 5px 0 #ffffff, -5px 5px 0 #ffffff, -5px -5px 0 #ffffff, 5px -5px 0 #ffffff;
+         }
+         .hyper-start-3 {
+             position: absolute;
+             padding: 20px;
+             left: 36%;
+             bottom: -5%;
+             color: #9A7B4F;
+         }
+         .mute-button {
+             padding: 10px 20px;
+             font-family: genshin;
+             font-size: 20px;
+             color: #ffffff;
+             background-color: #4A3728;
+             border: 2px solid #9A7B4F;
+             border-radius: 5px;
+             cursor: pointer;
+             text-shadow: 1px 1px 0 #9A7B4F;
+         }
+ 
+         .hyper-start-4 {
+             position: absolute;
+             padding: 20px;
+             left: 53%;
+             top: 18%;
+         }
+   .nav {
+     display: none; /* Hide navigation on small screens */
+   }
+ 
+   /* Any other styles for mobile */
+   .mobile-friendly {
+     display: block;
+   }
+ }
+ 
+ 
+ 
+ 
+     </style>
+ </head>
+ 
+ <body> <center>
+     <audio id="audioElement" autoplay loop>
+         <source src="mus/01.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+ 
+     <!-- Sound Effects -->
+     <audio id="hoverSfx">
+         <source src="sfx/nxt.wav" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+     <audio id="clickSfx">
+         <source src="sfx/nxt.wav" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+ 
+     <div class="container">
+         <div class="title-text">
+             <h1> PALARONG EPIKO: IBONG ADARNA </h1>
+         </div>
+         <div style="top:30%;position:relative; width: 33%; height:40%; background-color:#9A7B4F; border: 8px solid #4A3728;">
+             <div>
+                 <div class="hyper-start-1">
+                     <a href="CUTSCENE PG1.html">START GAME</a>
+                 </div>
+ 
+                 <div class="hyper-start-2">
+                     <a href="CREDITS.html">CREDITS</a>
+                 </div>
+                 <div class="hyper-start-3">    
+                     <button id="muteButton" class="mute-button">Mute</button>
+                 </div>
+             </div>
+         </div>
+     </div>
+ 
+     <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
+         const hoverSfx = document.getElementById('hoverSfx');
+         const clickSfx = document.getElementById('clickSfx');
+         const muteButton = document.getElementById('muteButton');
+         const interactiveElements = document.querySelectorAll('a, button,div,.forwardbutton');
+ 
+         // Ensure autoplay works
+         audioElement.addEventListener('canplaythrough', () => {
+             console.log('Audio is ready to play without buffering.');
+             audioElement.play();
+         });
+ 
+         // Handle cases where autoplay might be blocked
+         document.addEventListener('click', () => {
+             if (audioElement.paused) {
+                 audioElement.play();
+             }
+         });
+ 
+         // Mute Button Toggle
+         muteButton.addEventListener('click', () => {
+             if (audioElement.muted) {
+                 audioElement.muted = false;
+                 muteButton.textContent = 'Mute';
+             } else {
+                 audioElement.muted = true;
+                 muteButton.textContent = 'Unmute';
+             }
+         });
+ 
+         // Add hover and click sound effects
+         interactiveElements.forEach(element => {
+             element.addEventListener('mouseenter', () => {
+                 hoverSfx.currentTime = 0;
+                 hoverSfx.play();
+             });
+ 
+             element.addEventListener('click', () => {
+                 clickSfx.currentTime = 0;
+                 clickSfx.play();
+             });
+         });
+ 
+       })</script>
+ 
+ </body>
+ </html>
