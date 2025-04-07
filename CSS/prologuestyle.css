@@ -1,124 +1,139 @@
 @font-face {
-    font-family:genshin;
-    src: url(zh-cn.ttf);
-}
-@font-face {
-    font-family:dialogue;
-    src: url(CookieRunRegular.otf);
-}
-        /* Ensure the layout scales properly */
-        body {
-            background-color: #4A3728;
-            margin: 0;
-            font-family: genshin, sans-serif;
-        }
-.container {
-    top: 12%;
-    left: 2%;
-    position: absolute;
-    width: 95%;
-    max-width: 1350px;
-    margin: auto;
-    text-align: center;
-    height: 60%;
-}
-
-        .img1 {
-            width: 100%;
-            height: auto;
-        }
-
-
-.rectangle {
-    width: 95%;
-    max-width: 1200px;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-    padding: 15px;
-    margin: auto;
-    font-size: 1.5rem;
-    border-radius: 10px;
-    position: relative;
-    bottom: 25%;
-    left: 49%;
-    transform: translateX(-50%);
-}
-        .background-rect {
-            position: absolute;
-            top: -2%;
-            left: -1%;
-            z-index: -1; /* Puts it behind the image */
-        }
-        
-        #muteButton {
-       
-    position: absolute;
-    top: 4%;
-    left: 3%;
-    padding: 10px 15px;
-    font-size: 80%;
-    background-color: #00000078;
-    color: #ffffff;
-    border: 2px solid #00000075;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 10;
-    font-family: dialogue;
-        }
-        
-.GAY{
-    right: 25px;
-    font-size: 4rem;
-    background-color: #4A3728;
-    color: #ffffff;
-    border: 2px solid #9A7B4F;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 10;
-    font-family:dialogue;
-}
-.truthlessrecluse {
-
-font-size: 40px;
-
-
-
-
-}
-.forwardbutton {
-    position: absolute;
-    right: 5%;
-    bottom: -18%;
-    font-size: 2rem;
-    color: white;
-    cursor: pointer;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 20px;
-    border-radius: 50%;
-}
-
-        /* Orientation Warning */
-        #orientationWarning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #9A7B4F;
-            padding: 20px;
-            border-radius: 10px;
-            border: 4px solid #4A3728;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-        }
+     font-family:genshin;
+     src: url(zh-cn.ttf);
+ }
+ @font-face {
+     font-family:dialogue;
+     src: url(CookieRunRegular.otf);
+ }
+         /* Ensure the layout scales properly */
+         body {
+             background-color: #4A3728;
+             margin: 0;
+             font-family: genshin, sans-serif;
+         }
+ 
+         .container {
+             position: relative;
+             width: 110%;
+             max-width: 1350px;
+             margin: auto;
+             text-align: center;
+             height:120%;
+     max-height: 1350px;
+         }
+ 
+         .img1 {
+             width: 100%;
+             height: auto;
+         }
+ 
+         .rectangle {
+             width: 100%;
+             max-width: 1200px;
+             background: rgba(0, 0, 0, 0.6);
+             color: white;
+             padding: 15px;
+             margin: auto;
+             font-size: 1.5rem;
+             border-radius: 10px;
+             position: absolute;
+             bottom: 5%;
+             left: 50%;
+             transform: translateX(-50%);
+         }
+         .background-rect {
+             position: absolute;
+             top: -2%;
+             left: -1%;
+             z-index: -1; /* Puts it behind the image */
+         }
+ 
+         #muteButton {
+             position: fixed;
+             top: 10px;
+             left: 5px;
+             left: 150px;
+             padding: 10px 15px;
+             font-size:  170%;
+             background-color: #4A3728;
+             font-size: 170%;
+             background-color: #00000078;
+             color: #ffffff;
+             border: 2px solid #9A7B4F;
+             border: 2px solid #00000075;
+             border-radius: 5px;
+             cursor: pointer;
+             z-index: 10;
+             font-family:dialogue;
+             font-family: dialogue;
+         }
+         
+ .GAY{
+     right: 25px;
+     font-size: 4rem;
+     background-color: #4A3728;
+     color: #ffffff;
+     border: 2px solid #9A7B4F;
+     border-radius: 5px;
+     cursor: pointer;
+     z-index: 10;
+     font-family:dialogue;
+ }
+ .truthlessrecluse {
+ 
+ font-size: 40px;
+ 
+ 
+ 
+ 
+ }
+         .forwardbutton {
+             position: absolute;
+             right: 5%;
+             bottom: 10%;
+             font-size: 2rem;
+             color: white;
+             cursor: pointer;
+             background: rgba(0, 0, 0, 0.7);
+             padding: 10px 20px;
+             border-radius: 50%;
+         }
+ 
+         /* Orientation Warning */
+         #orientationWarning {
+             display: none;
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: rgba(0, 0, 0, 0.8);
+             color: white;
+             font-size: 20px;
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             text-align: center;
+             z-index: 1000;
+         }
+ 
+         .modal-content {
+             background: #9A7B4F;
+             padding: 20px;
+             border-radius: 10px;
+             border: 4px solid #4A3728;
+             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+         }
+ 
+         @media (max-width: 768px) {
+             .rectangle {
+                 font-size: 1.2rem;
+                 padding: 10px;
+             }
+ 
+             .forwardbutton {
+                 font-size: 1.5rem;
+                 bottom: 5%;
+             }
+         }
