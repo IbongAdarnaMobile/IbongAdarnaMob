@@ -122,15 +122,3 @@ font-size: 40px;
             border: 4px solid #4A3728;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
-
-        @media (max-width: 768px) {
-            .rectangle {
-                font-size: 1.2rem;
-                padding: 10px;
-            }
-
-            .forwardbutton {
-                font-size: 1.5rem;
-                bottom: 5%;
-            }
-        }
