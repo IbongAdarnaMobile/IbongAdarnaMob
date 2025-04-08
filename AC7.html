@@ -55,8 +55,12 @@
     
 })</script>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+               @media screen and (orientation: landscape) {
+            .potrait {
+                display: none;
+            }
+
         body {
             display: flex;
             align-items: center;
@@ -223,6 +227,17 @@
             font-family: dialogue;
             text-align: center;
        }
+               }
+
+                    @media screen and (orientation: portrait) {
+            .container {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
+}
+            
     </style>
 </head>
 <body>
