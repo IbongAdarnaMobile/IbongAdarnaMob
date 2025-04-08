@@ -29,7 +29,10 @@
 });
     </script>
         <title>Malinis</title>
-        <style>body{
+        <style> @media screen and (orientation: landscape) {
+            .potrait {
+                display: none;
+body{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,12 +202,27 @@ background-color:#4A3728;
     font-size: 35px;
     font-family: genshin;
     text-decoration: none;
-    
-} </style>
+}
+} 
+         @media screen and (orientation: portrait) {
+            .container {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
+}
+  
+        
+        </style>
         <script src="words.js" defer></script>
         <script src="forscript.js" defer></script>
 </head>
 <body>
+      <img class="potrait" src="art/potrait.webp" alt="Landscape only!" style="            
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;">
     <audio id="audioElement" autoplay loop>
         <source src="mus/SCR.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
