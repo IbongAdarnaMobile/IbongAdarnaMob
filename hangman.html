@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Ang Lakbay</title>
     <style>
         @media screen and (orientation: landscape) {
@@ -27,6 +27,8 @@
             }
             
             .container {
+                position: absolute;
+                top: 15%;
                 background: hsl(0, 100%, 93%);
                 width: 1450px;
                 height: 780px ;
@@ -48,7 +50,7 @@
             
             #word {
                 position: absolute;
-                top: 52%;
+                top: 47%;
                 font-size: 54px;
                 letter-spacing: 3px;
                 margin: 20px 0;
@@ -58,7 +60,7 @@
             
             #wrong-letters {
                 position: absolute;
-                top:83%;
+                top:70%;
                 color:#571111;
                 text-align: center;
                 font-size: 37px;
@@ -103,15 +105,15 @@
             }
             #attempts{
                 position: absolute;
-                top: 90%;
+                top: 75%;
                 text-align: center;
                 font-size: 34px;
                 color:#571111;
             }
             #letter-input {
-        position: absolute;
-        top: 100%;
-        left: 32%;
+                position: absolute;
+        top: 85%;
+        left: 30%;
         text-align: center;
         width: 350px;
         height: 100px;
@@ -121,7 +123,7 @@
 
             #guess-btn{
                 position: absolute;
-                top: 100%;
+                top: 85%;
                 right:29%;
                 text-align: center;
                 width: 250px;
@@ -134,7 +136,7 @@
             #restart-btn{
                 background-color:#ffcaca;
                 position: absolute;
-                top: 100%;
+                top: 85%;
                 left:72%;
                 text-align: center;
                 width: 250px;
@@ -273,12 +275,7 @@
         </style>
 </head>
 <body>
-    <img class="potrait" src="art/potrait.webp" alt="gay" style="            display: none;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            background-color: #4A3728;
-            overflow: hidden;">
+    <img class="potrait" src="art/potrait.webp" alt="gay">
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/UNANG LKBAY.mp3" type="audio/mpeg">
@@ -325,24 +322,25 @@
 <div id="modal" class="modal" style="display: none;  z-index:8;">
     <div class="modal-content">
         <div>
-        <h2 style="   position: absolute;
-           top: 5%;
-          left: 32.5%;
-            border-bottom: hidden;
-            font-size: 120px;" class="">MAHUSAY!</h2>
+        <h2 style="position: absolute;
+        top: 15%;
+        left: 33.5%;
+        border-bottom: hidden;
+        font-size: 120px;" class="">MAHUSAY!</h2>
             <br> <br>
         <p style="    position: absolute;
-            top: 25%;
-            left: 20.5%;
-            font-size: 80px;">Natapos mo ang mga salita</p>
+        top: 30%;
+        left: 23.5%;
+        font-size: 80px;">Natapos mo ang mga salita</p>
         <center><button onclick="goToNextPage()" style="  position: absolute;
-            top: 60%;
-            left: 40%;
-            padding: 25px 42px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 3px ;
-           font-size:25px ;
+  position: absolute;
+    top: 52%;
+    left: 41%;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 25px;
             background-color:#ffcaca;
             color:#571111;
            ">Sumunod na pahina</button></center>
