@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<head>
-      <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
-     <script>   document.addEventListener("DOMContentLoaded", function(){      const audioElement = document.getElementById('audioElement');
+<head>   <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
+    <script>  
+           const audioElement = document.getElementById('audioElement');
     const hoverSfx = document.getElementById('hoverSfx');
     const clickSfx = document.getElementById('clickSfx');
     const muteButton = document.getElementById('muteButton');
-    const interactiveElements = document.querySelectorAll('a, button ,div');
+    const interactiveElements =document.querySelectorAll('a, button , div , .buttons');
 
     // Ensure autoplay works
     audioElement.addEventListener('canplaythrough', () => {
@@ -21,35 +21,53 @@
     });
 
     // Mute Button Toggle
-            // Mute/unmute button
-            muteButton.addEventListener('click', () => {
-                audioElement.muted = !audioElement.muted;
-                muteButton.textContent = audioElement.muted ? 'Unmute' : 'Mute';
-            });
-});
-    </script>
-        <title>Malinis</title>
-        <style> @media screen and (orientation: landscape) {
-            .potrait {
-                display: none;
-body{
+    muteButton.addEventListener('click', () => {
+        if (audioElement.muted) {
+            audioElement.muted = false;
+            muteButton.textContent = 'Mute';
+        } else {
+            audioElement.muted = true;
+            muteButton.textContent = 'Unmute';
+        }
+    });
+
+    // Add hover and click sound effects
+    interactiveElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            hoverSfx.currentTime = 0;
+            hoverSfx.play();
+        });
+
+        element.addEventListener('click', () => {
+            clickSfx.currentTime = 0;
+            clickSfx.play();
+        });
+    });
+    
+</script>
+        <title>Mabangin</title>
+        <style>
+                    @media screen and (orientation: landscape) {
+                        body{
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-background-color:#4A3728;
+    background-color: #4A3728;
 }
-.con{position:absolute;
+.con{
+    position:absolute;
     width: 1550px;
     height: 750px;
         background-image: url("art/malinis.png" );
-       display: block;
+        display: block;
         background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
    border: 8px solid #9A7B4F;
         padding: 60px 40px;
         border-radius: 10px;
+        
 }
 .container{height: 95%;
     position: absolute;
@@ -98,11 +116,6 @@ background-color:#4A3728;
     font-size: 35px;
 }
 .content .buttons{
-    height: 16%;
-    position: absolute;
-    width: 95%;
-    left: 3%;
-    top: 80%;
     display: flex;
     margin-top: 20px;
     justify-content: space-between;
@@ -111,7 +124,7 @@ background-color:#4A3728;
     border:none;
     outline: none;
     padding: 15px 0;
-    font-size: 35px;
+    font-size: 17px;
     border-radius: 5px;
     width: calc(100% / 2 - 8px);
     color: #fff;
@@ -135,7 +148,7 @@ background-color:#4A3728;
     font-size: 35px;
     font-family: genshin;
     text-decoration: none;
-    color: #4A3728;
+    color: rgb(24, 24, 158);
 }
 
 @font-face {
@@ -147,7 +160,7 @@ background-color:#4A3728;
     src: url(CookieRunRegular.otf);
 }
 .modal {
-     
+    
     position: fixed; 
     z-index: 1; 
     left: 0;
@@ -158,7 +171,6 @@ background-color:#4A3728;
 }
 
 .modal-content {
- 
     border-radius: 5px;
     overflow: hidden;
     background-color: #fefefe;
@@ -202,30 +214,35 @@ background-color:#4A3728;
     font-size: 35px;
     font-family: genshin;
     text-decoration: none;
+    
 }
+                    }
+  .potrait {
+                display: none;
             }
-} 
-         @media screen and (orientation: portrait) {
+
+        @media screen and (orientation: portrait) {
             .container {
                 display: none;
             }
             .potrait {
             display: flex;
         }
-}
-  
-        
-        </style>
+    }
+
+
+
+</style>
         <script src="words.js" defer></script>
         <script src="forscript.js" defer></script>
 </head>
 <body>
-      <img class="potrait" src="art/potrait.webp" alt="Landscape only!" style="            
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;">
+    <img class="potrait" src="art/potrait.webp" alt="Landscape only!" style="            
+    align-items: center;
+    min-height: 100vh;
+    justify-content: center;">
     <audio id="audioElement" autoplay loop>
-        <source src="mus/SCR.mp3" type="audio/mpeg">
+        <source src="mus/scmblMb.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
@@ -235,16 +252,18 @@ background-color:#4A3728;
         Your browser does not support the audio element.
     </audio>
     <div class="con">
+
     <div class="container">
         <div style=" position: fixed;
-        padding: 20px;
-        left: 58.5%;
-        bottom: 63.9%;
-        color: #9A7B4F;">    
-
-      </div>
-            <h2 class="title">WORD SCRABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;Score: <span id="score">0</span>          <button id="muteButton"style="    position: absolute;
+      padding: 20px;
+      left: 58.5%;
+      bottom:  63.9%;
+            color: #9A7B4F;">    
+ 
+    </div>
+            <h2 class="title">WORD SCRABLE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;Score: <span id="score">0</span>       <button id="muteButton"style="   left: 87%; padding: 10px 20px;
+    position: absolute;
     left: 87%; padding: 10px 20px;
           font-family: genshin;
           font-size: 20px;
@@ -253,7 +272,8 @@ background-color:#4A3728;
           border: 2px solid #9A7B4F;
           border-radius: 5px;
           cursor: pointer;
-          text-shadow: 1px 1px 0 #9A7B4F;">Mute</button></h2>
+          text-shadow: 1px 1px 0 #9A7B4F;
+                ">Mute</button></h2>
             <div class="content">
                 <p class="word"></p>
                 <div class="details">
@@ -262,8 +282,8 @@ background-color:#4A3728;
                 </div>
                 <input type="text" placeholder="Bumigay ng salita">
                 <div class="buttons" style="display: none;">
-                    <button class="refresh-word">Refresh salita</button>
-                    <button class="check-word">Check salita</button>
+                    <button class="refresh-word">Refresh Salita</button>
+                    <button class="check-word">Check Salita</button>
                 </div>
             </div>
 <div id="modal" class="modal" style="display: none;">
@@ -297,7 +317,6 @@ position:relative;top:-22%;
        color:#a35e1f ">Go to Next Page</button>
                 </div>
             </div>
-         
          
             </div>
     </div>
