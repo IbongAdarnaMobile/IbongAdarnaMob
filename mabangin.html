@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head> 
+<head>  <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no">
     <script>  
            const audioElement = document.getElementById('audioElement');
     const hoverSfx = document.getElementById('hoverSfx');
@@ -46,7 +46,9 @@
     
 </script>
         <title>Mabangin</title>
-        <style>body{
+        <style>
+                    @media screen and (orientation: landscape) {
+                        body{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,6 +216,17 @@
     
 }
 
+  .potrait {
+                display: none;
+            }
+
+        @media screen and (orientation: portrait) {
+            .container {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
 
 
 
@@ -223,6 +236,7 @@
         <script src="forscript.js" defer></script>
 </head>
 <body>
+    <img class="potrait" src="art/potrait.webp" alt="gay">
     <audio id="audioElement" autoplay loop>
         <source src="mus/scmblMb.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
