@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no">
     <title>Ang Lakbay</title>
     <style>
 
@@ -250,19 +250,24 @@
           text-shadow: 1px 1px 0 #8e7979;
         }
         
-            
-        
-        
-        
-        
-        
-        
-        
         }
-        
+                @media screen and (orientation: landscape) {
+            .potrait {
+                display: none;
+            }
+        }
+        @media screen and (orientation: portrait) {
+            .container {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
+}
         </style>
 </head>
 <body>
+    <img class="potrait" src="art/potrait.webp" alt="gay">
     <audio id="audioElement" autoplay loop>
         <source src="mus/UNANG LKBAY.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
