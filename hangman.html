@@ -2,272 +2,280 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5, maximum-scale=1, user-scalable=no">
     <title>Ang Lakbay</title>
     <style>
-
         .potrait {
             display: none;
         }
-        
-            button{
-        
-        background-color: #ffcaca;
-        color: #2d0a0a;
-        
-                }
-            body {
-                font-family: dialogue;
-                display: flex;
-                align-items: center;
-        
-                justify-content: center;
-            background-color:#9a4040;
-            }
-            
-            .container {
-                background: hsl(0, 100%, 93%);
-                width: 1450px;
-                height: 780px ;
-                    
-                    display: flex;
-                    padding: 60px 40px;
-                    border-radius: 10px;
-                    align-items: center;
-                    justify-content: center;
-            }
-            
-            #hangman {
-                width: 1900px;
-                height: 340px;
-                position: relative;
-                margin: 20px auto;
-            
-            }
-            
-            #word {
-                position: absolute;
-                top: 30%;
-                font-size: 54px;
-                letter-spacing: 3px;
-                margin: 20px 0;
-                text-align: center;
-                color:#571111;
-            }
-            
-            #wrong-letters {
-                position: absolute;
-                top:43%;
-                color:#571111;
-                text-align: center;
-                font-size: 37px;
-            }
-            
-            #race {
-                bottom:69%;
-                margin: 20px 0;
-                position: absolute;
-                width: 1200px;
-                height: 30px;
-                
-               overflow: visible;
-            z-index:1;
-                
-            background-color: #2d0a0a;
-            }
-            
-               #horse {
-                width: 400px; 
-                height: 300px; 
-              
-                background-size: contain; 
-                background-repeat: no-repeat; 
-                background-position: center; 
-                position: absolute;
-                bottom: -190%;
-                transition: left 0.5s ease; 
-                z-index:6;
-                
-                background-image: url('art/donped.png'); 
-        
-            }
-            
-            #finish-line {
-                width: 5px;
-                height: 2%;
-                background-color: rgb(255, 0, 0); 
-                position: absolute;
-                right: 0;
-                z-index:1;
-            }
-            #attempts{
-                position: absolute;
-                top: 46%;
-                text-align: center;
-                font-size: 34px;
-                color:#571111;
-            }
-            #letter-input {
-        position: absolute;
-        top: 50%;
-        left: 40%;
-        text-align: center;
-        width: 350px;
-        height: 100px;
-        font-size: 30px;
-        font-family: genshin;
-        color: #571111;}
 
-            #guess-btn{
-                position: absolute;
-                top: 50%;
-                right:40%;
-                text-align: center;
-                width: 250px;
-                height: 105.8px;
-                font-size: 30px;
-                font-family: dialogue;
-                color:#571111;
-                background-color:#ffcaca;
-            }
-            #restart-btn{
-                background-color:#ffcaca;
-                position: absolute;
-                top: 50%;
-                left:60%;
-                text-align: center;
-                width: 250px;
-                height: 105px;
-                font-size: 30px;
-                font-family: dialogue;
-                color:#571111;
-            }
-        
-            #hint{
-                position: absolute;
-                bottom: 58%;
-            }
-        
-            #message {
-                margin-top: 20px;
-                position: absolute;
-                top: 21%;
-                font-size: 54px;
-                letter-spacing: 3px;
-                text-align: center;
-                color:#571111;
-            
-            }
-            ::placeholder{
-             color: #571111;
-            }
-            
-            
-            @font-face {
-                font-family:genshin;
-                src: url(zh-cn.ttf);
-            }
-            @font-face {
-                font-family:dialogue;
-                src: url(CookieRunRegular.otf);
-            }
-            /* Add this CSS to style your modal */
-            .modal {
-                display: flex;
-                position: fixed;
-                z-index: 1;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background:   #690e0e;
-                background-color: rgba(0,0,0,0.4);
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-            }
-            
-            .modal-content {
-                border-radius: 1%;
-                overflow: hidden;
-                background-color: #ffd6d6;
-                margin: 15% auto;
-                padding: 20px;
-                border: 5px solid #2d0a0a;
-                height: 600px;
-                width: 1200px;
-                
-            }
-            
-            .modal h2{
-                z-index: 1;
-                position: absolute;
-                top: 15%;
-                left: 39%;
-                font-size: 60px;
-                color: #2d0a0a;
-            }
-            .modal p{
-                z-index: 1;
-                top: 28%;
-                left: 35%;
-                position: absolute;
-                font-size: 20px;
-                 color:#a31f1f  ;
-            }
-            .modal button{
-                position: absolute;
-                top: 70%;
-                left: 43%;
-                padding: 25px 42px;
-                text-align: center;
-                text-decoration: none;
-                border-radius: 3px ;
-               font-size:25px ;
-               font-family: dialogue;
-                background-color: #fdd6a6;
-               color:#a35e1f  ;
-            }
-            
-            
-            .hyper-start-3 {
-          position: absolute;
-          padding: 20px;
-          left: 12%;
-          bottom: 85.5%;
-          color: #9a4f4f;
+        button {
+            background-color: #ffcaca;
+            color: #2d0a0a;
         }
+
+        body {
+            font-family: dialogue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #9a4040;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background: hsl(0, 100%, 93%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+
+        #hangman {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: 20px auto;
+        }
+
+        #word {
+            font-size: 3em;
+            letter-spacing: 3px;
+            margin: 20px 0;
+            text-align: center;
+            color: #571111;
+        }
+
+        #wrong-letters {
+            font-size: 2.5em;
+            color: #571111;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #race {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            height: 60px;
+            background-color: #2d0a0a;
+            margin-top: 20px;
+        }
+
+        #horse {
+            width: 30%;
+            height: 100%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: absolute;
+            bottom: 0;
+            transition: left 0.5s ease;
+            z-index: 6;
+            background-image: url('art/donped.png');
+        }
+
+        #finish-line {
+            width: 5px;
+            height: 100%;
+            background-color: rgb(255, 0, 0);
+            position: absolute;
+            right: 0;
+        }
+
+        #attempts {
+            font-size: 2em;
+            color: #571111;
+            text-align: center;
+        }
+
+        #letter-input {
+            width: 70%;
+            max-width: 350px;
+            font-size: 2em;
+            color: #571111;
+            background-color: #ffcaca;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #guess-btn,
+        #restart-btn {
+            width: 70%;
+            max-width: 250px;
+            font-size: 2em;
+            background-color: #ffcaca;
+            color: #571111;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #hint {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #message {
+            font-size: 3em;
+            color: #571111;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        @font-face {
+            font-family: genshin;
+            src: url(zh-cn.ttf);
+        }
+
+        @font-face {
+            font-family: dialogue;
+            src: url(CookieRunRegular.otf);
+        }
+
+        .modal {
+            display: flex;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .modal-content {
+            background-color: #ffd6d6;
+            padding: 20px;
+            border: 5px solid #2d0a0a;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .modal h2 {
+            font-size: 4em;
+            color: #2d0a0a;
+        }
+
+        .modal p {
+            font-size: 2em;
+            color: #a31f1f;
+        }
+
+        .modal button {
+            padding: 20px;
+            font-size: 2em;
+            background-color: #ffcaca;
+            color: #571111;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .hyper-start-3 {
+            position: absolute;
+            left: 12%;
+            bottom: 85.5%;
+            color: #9a4f4f;
+        }
+
         .mute-button {
-            position:relative;
-            z-index:5;
-            left:1130%;
+            position: relative;
+            left: 1130%;
             bottom: 50%;
-          padding: 10px 20px;
-          font-family: genshin;
-          font-size: 20px;
-          color: #ffffff;
-          background-color: #4a2828;
-          border: 2px solid #9a4f4f;
-          border-radius: 5px;
-          cursor: pointer;
-          text-shadow: 1px 1px 0 #8e7979;
+            padding: 10px 20px;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #4a2828;
+            border: 2px solid #9a4f4f;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 1px 1px 0 #8e7979;
         }
-        
-    
-                @media screen and (orientation: landscape) {
+
+        @media screen and (max-width: 600px) {
+            #word {
+                font-size: 2.5em;
+            }
+
+            #attempts {
+                font-size: 1.8em;
+            }
+
+            #letter-input,
+            #guess-btn,
+            #restart-btn {
+                font-size: 1.8em;
+            }
+
+            #message {
+                font-size: 2.5em;
+            }
+
+            #hint {
+                font-size: 1.2em;
+            }
+        }
+
+        @media screen and (orientation: landscape) {
             .potrait {
                 display: none;
             }
+
+            .container {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                height: 100%;
+            }
+
+            #hangman {
+                width: 50%;
+            }
+
+            #word {
+                font-size: 3em;
+            }
+
+            #letter-input,
+            #guess-btn,
+            #restart-btn {
+                font-size: 1.8em;
+            }
+
+            #attempts {
+                font-size: 2em;
+            }
+
+            #message {
+                font-size: 2.5em;
+            }
         }
+
         @media screen and (orientation: portrait) {
             .container {
-                display: none;
+                flex-direction: column;
+                align-items: center;
             }
-            .potrait {
-            display: flex;
         }
-}
-        </style>
+
+    </style>
 </head>
 <body>
     <img class="potrait" src="art/potrait.webp" alt="gay">
@@ -275,75 +283,45 @@
         <source src="mus/UNANG LKBAY.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    
-    <!-- Sound Effects -->
+
     <audio id="clickSfx">
         <source src="sfx/nxt.wav" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+
     <div class="container">
-        <div class="hyper-start-3">    
+        <div class="hyper-start-3">
             <button id="muteButton" class="mute-button">o</button>
         </div>
-        <div id="hint" style="font-size: 24px; margin-top: 20px; text-align: center;">
-        </div>
+        <div id="hint"></div>
 
         <div id="race">
-         <div id="horse" class="horse"></div>
-         <img src="art/hangmanbg.png" style="z-index:-2; position:relative; bottom: 900%;" width="100%" height="900%">
+            <div id="horse" class="horse"></div>
+            <img src="art/hangmanbg.png" style="z-index:-2; position:relative;" width="100%" height="auto">
             <div id="race-track">
                 <div id="finish-line"></div>
             </div>
         </div>
-        <div id="word" style="z-index:5; color: #000000;text-shadow:
-    3px 3px 0 #ffffff,
-    -3px 3px 0 #ffffff,
-    -3px -3px 0 #ffffff,
-    3px -3px 0 #ffffff;"></div>
+
+        <div id="word"></div>
         <div id="wrong-letters"></div>
         <div id="attempts">Natitirang tangkain: <span id="remaining-attempts">6</span></div>
-    
-      
-        <input style="background-color: #ffcaca;"  type="text" id="letter-input" maxlength="1" placeholder="Manghula ng letra" autocomplete="off" />
+
+        <input type="text" id="letter-input" maxlength="1" placeholder="Manghula ng letra" autocomplete="off" />
         <button id="guess-btn">Ihula</button>
         <button id="restart-btn" style="display: none;">Sumunod na salita</button>
-        <p id="message" style="z-index:5;  color: #fff;text-shadow:
-    3px 3px 0 #000,
-    -3px 3px 0 #000,
-    -3px -3px 0 #000,
-    3px -3px 0 #000;"></p>
-        
-<div id="modal" class="modal" style="display: none;  z-index:8;">
-    <div class="modal-content">
-        <div>
-        <h2 style="   position: absolute;
-           top: 5%;
-          left: 30.5%;
-            border-bottom: hidden;
-            font-size: 120px;" class="">MAHUSAY!</h2>
-            <br> <br>
-        <p style="    position: absolute;
-            top: 25%;
-            left: 20.5%;
-            font-size: 80px;">Natapos mo ang mga salita</p>
-        <center><button onclick="goToNextPage()" style="  position: absolute;
-            top: 60%;
-            left: 40%;
-            padding: 25px 42px;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 3px ;
-           font-size:25px ;
-            background-color:#ffcaca;
-            color:#571111;
-           ">Sumunod na pahina</button></center>
-               </div>
-            
-    </div>
-    </div>
-</div>
+        <p id="message"></p>
 
-<script>        const audioElement = document.getElementById('audioElement');
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>MAHUSAY!</h2>
+                <p>Natapos mo ang mga salita</p>
+                <button onclick="goToNextPage()">Sumunod na pahina</button>
+            </div>
+        </div>
+    </div>
+
+   <script>        const audioElement = document.getElementById('audioElement');
     const hoverSfx = document.getElementById('hoverSfx');
     const clickSfx = document.getElementById('clickSfx');
     const muteButton = document.getElementById('muteButton');
@@ -515,3 +493,4 @@ const words = [
     </script>
 </body>
 </html>
+
