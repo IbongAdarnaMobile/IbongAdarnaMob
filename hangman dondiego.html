@@ -45,7 +45,8 @@ position:relative;
     }
     
     .container {
-        
+        position: absolute;
+        top: 15%;
         width: 1450px;
         height: 780px ;
              background: #efd4ff;
@@ -65,7 +66,7 @@ position:relative;
     
     #word {
         position: absolute;
-                top: 52%;
+                top: 47%;
                 font-size: 54px;
                 letter-spacing: 3px;
                 margin: 20px 0;
@@ -75,7 +76,7 @@ position:relative;
     
     #wrong-letters {
         position: absolute;
-        top:83%;
+        top:70%;
         color:#521157;
         text-align: center;
         font-size: 37px;
@@ -118,15 +119,15 @@ position:relative;
     }
     #attempts{
         position: absolute;
-                top: 90%;
+                top: 75%;
                 text-align: center;
                 font-size: 34px;
          color:#521157;
     }
     #letter-input{
         position: absolute;
-        top: 100%;
-        left: 32%;
+        top: 85%;
+        left: 30%;
         text-align: center;
         width: 350px;
         height: 100px;
@@ -137,7 +138,7 @@ position:relative;
     }
     #guess-btn{
         position: absolute;
-                top: 100%;
+                top: 85%;
                 right:29%;
                 text-align: center;
                 width: 250px;
@@ -149,7 +150,7 @@ position:relative;
     }
     #restart-btn{
         position: absolute;
-                top: 100%;
+                top: 85%;
                 left:72%;
                 text-align: center;
                 width: 250px;
@@ -241,7 +242,7 @@ position:relative;
     }
     #hint{
         position: absolute;
-        bottom: 20%;
+        bottom: 35%;
     }
     
     .potrait {
@@ -291,9 +292,11 @@ position:relative;
         left: 12%;
         bottom: 85.5%;
         color: #844f9a;">    
-          <button id="muteButton"style="            position:relative;
+          <button id="muteButton"style="            position:absolute;
             z-index:5;
-            bottom: 40%;
+       
+    left: 310%;
+    bottom: -190%;
           padding: 10px 20px;
           font-family: genshin;
           font-size: 20px;
@@ -341,21 +344,27 @@ position:relative;
 <div id="modal" class="modal" style="display: none;  z-index:8;">
 <div class="modal-content">
 <div style="left:50% ;">
-<h2 style="   position: absolute;
-   top: 5%;
-  left: 33.5%;
-    border-bottom: hidden;
-    font-size: 120px;">MAHUSAY!</h2>
+<h2 style="
+position: absolute;
+top: 15%;
+left: 33.5%;
+border-bottom: hidden;
+font-size: 120px;
+">MAHUSAY!</h2>
     <br> <br>
 <p style="
-    position: absolute;
-    top: 24%;
-    left: 18.5%;
+
+position: absolute;
+    top: 30%;
+    left: 23.5%;
     font-size: 80px;
+    
     ">Natapos mo ang mga salita</p>
 <center><button onclick="goToNextPage()" style="position: absolute;
-    top: 60%;
-    left: 40%;
+  
+  position: absolute;
+    top: 52%;
+    left: 41%;
     padding: 25px 42px;
     text-align: center;
     text-decoration: none;
@@ -363,6 +372,7 @@ position:relative;
     font-size: 25px;
     color: #521157;
     background-color: #e2befd;
+
 ">Sumunod na pahina</button></center>
        </div>
     </div>
