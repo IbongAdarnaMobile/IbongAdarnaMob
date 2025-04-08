@@ -47,7 +47,7 @@
             
             #word {
                 position: absolute;
-                top: 52%;
+                top: 30%;
                 font-size: 54px;
                 letter-spacing: 3px;
                 margin: 20px 0;
@@ -57,14 +57,14 @@
             
             #wrong-letters {
                 position: absolute;
-                top:83%;
+                top:43%;
                 color:#571111;
                 text-align: center;
                 font-size: 37px;
             }
             
             #race {
-                bottom:43%;
+                bottom:69%;
                 margin: 20px 0;
                 position: absolute;
                 width: 1200px;
@@ -102,15 +102,15 @@
             }
             #attempts{
                 position: absolute;
-                top: 90%;
+                top: 46%;
                 text-align: center;
                 font-size: 34px;
                 color:#571111;
             }
             #letter-input {
         position: absolute;
-        top: 100%;
-        left: 32%;
+        top: 50%;
+        left: 40%;
         text-align: center;
         width: 350px;
         height: 100px;
@@ -120,8 +120,8 @@
 
             #guess-btn{
                 position: absolute;
-                top: 100%;
-                right:29%;
+                top: 50%;
+                right:40%;
                 text-align: center;
                 width: 250px;
                 height: 105.8px;
@@ -133,8 +133,8 @@
             #restart-btn{
                 background-color:#ffcaca;
                 position: absolute;
-                top: 100%;
-                left:72%;
+                top: 50%;
+                left:60%;
                 text-align: center;
                 width: 250px;
                 height: 105px;
@@ -145,13 +145,13 @@
         
             #hint{
                 position: absolute;
-                bottom: 20%;
+                bottom: 58%;
             }
         
             #message {
                 margin-top: 20px;
                 position: absolute;
-                top: 20%;
+                top: 21%;
                 font-size: 54px;
                 letter-spacing: 3px;
                 text-align: center;
@@ -240,7 +240,8 @@
         .mute-button {
             position:relative;
             z-index:5;
-            bottom: 40%;
+            left:1130%;
+            bottom: 50%;
           padding: 10px 20px;
           font-family: genshin;
           font-size: 20px;
@@ -252,7 +253,7 @@
           text-shadow: 1px 1px 0 #8e7979;
         }
         
-        }
+    
                 @media screen and (orientation: landscape) {
             .potrait {
                 display: none;
@@ -282,14 +283,14 @@
     </audio>
     <div class="container">
         <div class="hyper-start-3">    
-            <button id="muteButton" class="mute-button">Mute</button>
+            <button id="muteButton" class="mute-button">o</button>
         </div>
         <div id="hint" style="font-size: 24px; margin-top: 20px; text-align: center;">
         </div>
 
         <div id="race">
          <div id="horse" class="horse"></div>
-         <img src="art/hangmanbg.png" style="z-index:-2; position:relative; bottom: 1100%;" width="100%" height="900%">
+         <img src="art/hangmanbg.png" style="z-index:-2; position:relative; bottom: 900%;" width="100%" height="900%">
             <div id="race-track">
                 <div id="finish-line"></div>
             </div>
@@ -365,10 +366,10 @@
     muteButton.addEventListener('click', () => {
         if (audioElement.muted) {
             audioElement.muted = false;
-            muteButton.textContent = 'Mute';
+            muteButton.textContent = 'o';
         } else {
             audioElement.muted = true;
-            muteButton.textContent = 'Unmute';
+            muteButton.textContent = 'x';
         }
     });
 
