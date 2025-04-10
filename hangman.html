@@ -389,12 +389,14 @@ z-index: 1;
     font-size: 70px;
     top: 40%;
     ">Natapos mo ang mga salita</p>
+
     <p id="final-score-text" style="
     position: fixed;
-    left: 40%;
-    font-size: 50px;
-    top: 50%;
+    left: 43%;
+    font-size: 40px;
+    top: 60%;
     color: #2d0a0a;">
+    
 </p>
 <center>
     <button onclick="goToNextPage()" style="
@@ -470,6 +472,8 @@ const words = [
     
 ];
     let score = 0;
+    const totalScore = words.length * 10;
+
     let currentWordIndex = 0;
     let selectedWord = words[currentWordIndex].word;
     let currentHint = words[currentWordIndex].hint;
@@ -601,7 +605,10 @@ finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
             updateWrongLetters();
         } else {
             // Show the modal when all words are completed
-            modal.style.display = 'flex';
+    // Game finished
+    const finalScoreText = document.getElementById('final-score-text');
+    finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
+    modal.style.display = 'flex';
         }
     });
     
