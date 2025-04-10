@@ -2,30 +2,43 @@
  <html lang="en">
  <head>
      <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
+  <meta name="viewport" content="width=device-width, maximum-scale=0.5, user-scalable=no">
      <title>Pangalawang Lakbay</title>
      <style>
  
  
  
      @media screen and (orientation: landscape) {
+        @keyframes popFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -70%) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100%) scale(0.8);
+    }
+}
+        .hyper-start-3 { 
+
+position: absolute;
+padding: 20px;
+left: 12%;
+bottom: 85.5%;
+color: #9a4f4f;
+}
  
- 
-     .hyper-start-3 {
-   position: absolute;
-   padding: 20px;
-   left: 12%;
-   bottom: 87.5%;
-   color: #9A7B4F;
- }
  .mute-button {
-         top: 14%;
-         left: 10%;
-         position: absolute;
-         z-index: 5;
-           padding: 10px 20px;
-           font-family: genshin;
-           font-size: 20px;
+
+    position:relative;
+            z-index:5;
+            bottom: 40%;
+          padding: 10px 20px;
+          font-family: genshin;
+          font-size: 20px;
    color: #ffffff;
    background-color: #45284a;
    border: 2px solid #7d4f9a;
@@ -46,16 +59,16 @@
      }
  
      .container {
-         position: absolute;
-         top: 15%;
-         width: 1450px;
-         height: 780px ;
+        position: absolute;
+        top: 8%;
+        width: 1450px;
+        height: 750px;
+        display: flex;
+        padding: 60px 40px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
               background: #efd4ff;
-              display: flex;
-                     padding: 60px 40px;
-                     border-radius: 10px;
-                     align-items: center;
-                     justify-content: center;
      }
  
      #hangman {
@@ -66,32 +79,32 @@
      }
  
      #word {
-         position: absolute;
-                 top: 47%;
-                 font-size: 54px;
-                 letter-spacing: 3px;
-                 margin: 20px 0;
-                 text-align: center;
+
+        position: absolute;
+        top: 35%;
+        font-size: 54px;
+        letter-spacing: 3px;
+        margin: 20px 0;
+        text-align: center;
          color:#551157;
      }
  
      #wrong-letters {
-         position: absolute;
-         top:70%;
+        position: absolute;
+        top: 63%;
+        text-align: center;
+        font-size: 37px; 
          color:#521157;
-         text-align: center;
-         font-size: 37px;
      }
  
      #race {
-         bottom:45%;
-                 margin: 20px 0;
-                 position: absolute;
-                 width: 1200px;
-                 height: 30px;
- 
-                overflow: visible;
-             z-index:1;
+        bottom: 60%;
+        margin: 20px 0;
+        position: absolute;
+        width: 1200px;
+        height: 30px;
+        overflow: visible;
+        z-index: 1;
           background-color: #2d1b0a;
  
  
@@ -119,55 +132,56 @@
          z-index:1;
      }
      #attempts{
-         position: absolute;
-                 top: 75%;
-                 text-align: center;
-                 font-size: 34px;
+        position: absolute;
+        top: 68%;
+        text-align: center;
+        font-size: 34px;
           color:#521157;
      }
      #letter-input{
-         position: absolute;
-         top: 85%;
-         left: 30%;
-         text-align: center;
-         width: 350px;
-         height: 100px;
-         font-size: 30px;
-         font-family: genshin;
+               
+        position: absolute;
+        top: 75%;
+        left: 30%;
+        text-align: center;
+        width: 350px;
+        height: 100px;
+        font-size: 30px;
+        font-family: genshin;
          color: #521157;
             background-color:#fdddbe;
      }
      #guess-btn{
-         position: absolute;
-                 top: 85%;
-                 right:29%;
-                 text-align: center;
-                 width: 250px;
-                 height: 105.8px;
-                 font-size: 30px;
-                 font-family: dialogue;
+        position: absolute;
+                top: 75%;
+                right:29%;
+                text-align: center;
+                width: 250px;
+                height: 105.8px;
+                font-size: 30px;
+                font-family: dialogue;
          color: #521157;
             background-color:#e2befd;
      }
      #restart-btn{
          position: absolute;
-                 top: 85%;
-                 left:72%;
-                 text-align: center;
-                 width: 250px;
-                 height: 105px;
-                 font-size: 30px;
-                 font-family: dialogue;
+         position: absolute;
+                top: 75%;
+                left:72%;
+                text-align: center;
+                width: 250px;
+                height: 105px;
+                font-size: 30px;
+                font-family: dialogue;
          color: #521157;
             background-color:#f4e5ff;
      }
      #message {
-         margin-top: 20px;
-                 position: absolute;
-                 top: 20%;
-                 font-size: 54px;
-                 letter-spacing: 3px;
-                 text-align: center;
+        margin-top: 20px;
+                position: absolute;
+                top: 20%;
+                font-size: 54px;
+                letter-spacing: 3px;
        color:#521157;
  
      }
@@ -186,13 +200,13 @@
      /* Add this CSS to style your modal */
  
      .modal {
-         display: flex;
-         position: fixed;
-         z-index: 1;
-         left: 0;
-         top: 0;
-         width: 100%;
-         height: 100%;
+        display: flex;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
          background:   #693a0e;
          background-color: rgba(0,0,0,0.4);
          justify-content: center;
@@ -216,44 +230,47 @@
          z-index: 1;
                  position: absolute;
                  top: 15%;
-                 left: 39%;
-                 font-size: 60px;
+        left: 35%;
+        font-size: 100px;
          color: #280a2d;
      }
      .modal p{
-         z-index: 1;
-                 top: 28%;
-                 left: 35%;
-                 position: absolute;
-                 font-size: 20px;
+        z-index: 1;
+                top: 28%;
+                left: 35%;
+                position: absolute;
+                font-size: 20px;
           color:#6c1fa3  ;
      }
      .modal button{
-         position: absolute;
-                 top: 70%;
-                 left: 43%;
-                 padding: 25px 42px;
-                 text-align: center;
-                 text-decoration: none;
-                 border-radius: 3px ;
-                font-size:25px ;
-                font-family: dialogue;
+        position: absolute;
+                top: 70%;
+                left: 43%;
+                padding: 25px 42px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 3px ;
+               font-size:25px ;
+               font-family: dialogue;
          background-color: #fdd6a6;
         color:#7b1fa3  ;
      }
      #hint{
          position: absolute;
-         bottom: 35%;
+         bottom: 40%;
      }
  
-     .potrait {
+     .potrait {            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
              display: none;
          }
  
      }
  
      @media screen and (orientation: portrait) {
-             .container {
+             .container, .modal {
                  display: none;
              }
              .potrait {
@@ -283,6 +300,10 @@
      </audio>
  
      <!-- Sound Effects -->
+     <audio id="correctSfx">
+        <source src="sfx/win.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
      <audio id="clickSfx">
          <source src="sfx/nxt.wav" type="audio/mpeg">
          Your browser does not support the audio element.
@@ -292,8 +313,37 @@
        </div>
      </div>
      <div class="container">
-                   <button id="muteButton" class="mute-button">Mute</button>
-         <div id="hint" style="font-size: 24px; margin-top: 20px; text-align: center;">
+          <div id="score-display" style="
+        z-index: 3;
+        position: absolute;
+        top: 5%;
+        left: 80%;
+        font-size: 30px;
+        color: #2d0a0a;
+        text-shadow: 3px 3px 0 #ffffff, -3px 3px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff;">
+            Iskor: <span id="score">0</span>
+        </div>
+        <div id="plus-ten" style="
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-family: dialogue;
+    font-weight: bold;
+    color: #fce3e3;
+    text-shadow: 2px 2px 5px #000;
+    z-index: 9999;
+    pointer-events: none;
+">
+    +10
+</div>
+        <div class="hyper-start-3">    
+            <button id="muteButton" class="mute-button">Mute</button>
+        </div>
+
+         <div id="hint"style="font-size: 24px; margin-top: 20px; text-align: center;">
          </div>
  
          <div id="race" style="
@@ -327,48 +377,37 @@
  <div id="modal" class="modal" style="display: none;  z-index:8;">
  <div class="modal-content">
  <div style="left:50% ;">
- <h2 style="
- position: absolute;
- top: 15%;
- left: 33.5%;
- border-bottom: hidden;
- font-size: 120px;
- ">MAHUSAY!</h2>
+    <h2 style="
+    z-index: 1;
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    font-size: 150px;
+    ">MAHUSAY!</h2>
      <br> <br>
- <p style="
- 
- position: absolute;
-     top: 30%;
-     left: 23.5%;
-     font-size: 80px;
-     
+     <p style="
+     position: fixed;
+     left: 36%;
+     font-size: 70px;
+     top: 40%;
      ">Natapos mo ang mga salita</p>
- <center><button onclick="goToNextPage()" style="position: absolute;
-   
-     
- <h2 style="position: absolute;top: -5%;left: 25.5%;border-bottom: hidden;font-size: 120px;">MAHUSAY!</h2>
-     <br> <br>
- <p style="position: absolute;top: 25%;left: 23.5%;font-size: 50px;">Natapos mo ang mga salita</p>
+
+<p id="final-score-text" style="
+position: fixed;
+left: 43%;
+font-size: 40px;
+top: 60%;
+color: #2d0a0a;">
+
  <center><button onclick="goToNextPage()" style="
-   position: absolute;
-     top: 52%;
-     left: 41%;
-     padding: 25px 42px;
-     text-align: center;
-     text-decoration: none;
-     border-radius: 3px;
-     font-size: 25px;
-     color: #521157;
-     background-color: #e2befd;
- 
-   position: absolute;
-   top: 52%;
-   left: 37%;
-   padding: 25px 42px;
-   text-align: center;
-   text-decoration: none;
-   border-radius: 3px;
-   font-size: 25px;
+    position: fixed;
+    top: 55%;
+    left: 45%;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 25px;
    color: #521157;
    background-color: #e2befd;
  ">Sumunod na pahina</button></center>
@@ -432,7 +471,9 @@
         { word: 'ginhawa', hint: 'Hint:Kasiya-siyang pakiramdam ng tao dahil sa preskong panahon,\n paggalíng mula sa sakít, pagkalutas ng suliranin, pagkamit ng nais, at katulad.\n \n Nakaka-  _ _ _ _ _ _ _  nang malaman ni Haring Fernando na hindi bumalik si Don pedro' },
         { word: 'utusan', hint: 'Hint: Ang pagbibigay ng tagubilin o kautusan sa isang tao para \n gawin o hindi gawin ang isang bagay.\n \n Na  _ _ _ _ _ _ _  siya ng kaniyang magulang na maglinis ng pingan' }
      ];
- 
+     let score = 0;
+    const totalScore = words.length * 10;
+
      let currentWordIndex = 0;
      let selectedWord = words[currentWordIndex].word;
      let currentHint = words[currentWordIndex].hint;
@@ -443,6 +484,11 @@
      const horseStep = 20; // How much the horse moves with each correct guess
      const raceFinishLine = 1590; // The position of the finish line
  
+     const scoreEl = document.getElementById('score');
+     const correctSfx = document.getElementById('correctSfx');
+
+
+
      const wordEl = document.getElementById('word');
      const wrongLettersEl = document.getElementById('wrong-letters');
      const remainingAttemptsEl = document.getElementById('remaining-attempts');
@@ -452,22 +498,52 @@
      const restartBtn = document.getElementById('restart-btn');
      const horseEl = document.getElementById('horse');
      const hintEl = document.getElementById('hint');
- 
+     //strt of ten
+     function showPlusTen() {
+    const plusTenEl = document.getElementById('plus-ten');
+    plusTenEl.style.display = 'block';
+    plusTenEl.style.animation = 'popFade 1s ease-out';
+
+    // After animation ends, hide the element and remove animation
+    plusTenEl.addEventListener('animationend', () => {
+        plusTenEl.style.display = 'none';
+        plusTenEl.style.animation = '';
+    }, { once: true });
+}
+
      letterInput.addEventListener('keydown', () => {
              clickSfx.currentTime = 0; // Reset playback to the beginning
              clickSfx.play();
  
      })
      function displayWord() {
-         wordEl.innerHTML = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
- 
-         // Check if the word has been completely guessed
-         if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
-             guessBtn.disabled = true; // Disable guessing button
-             messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`; // Show success message
-             restartBtn.style.display = 'inline'; // Show next word button
-         }
-     }
+        wordEl.innerHTML = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
+    
+        if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
+    guessBtn.disabled = true;
+    messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`;
+    restartBtn.style.display = 'inline';
+
+//add yummy score in my yummy tummy
+    score += 10;
+    scoreEl.innerText = score;
+    showPlusTen();
+
+    correctSfx.currentTime = 0;
+correctSfx.play();
+
+}
+
+        // Check if the word has been completely guessed
+        if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
+            guessBtn.disabled = true; // Disable guessing button
+            messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`; // Show success message
+            const finalScoreText = document.getElementById('final-score-text');
+finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
+
+            restartBtn.style.display = 'flex'; // Show next word button
+        }
+    }
  
      function updateWrongLetters() {
          wrongLettersEl.innerHTML = `Maling letra: ${wrongLetters.join(', ')}`;
@@ -527,8 +603,11 @@
              displayWord();
              updateWrongLetters();
          } else {
-             // Show the modal when all words are completed
-             modal.style.display = 'flex';
+           // Show the modal when all words are completed
+    // Game finished
+    const finalScoreText = document.getElementById('final-score-text');
+    finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
+    modal.style.display = 'flex';
          }
      });
  
