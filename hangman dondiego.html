@@ -1,172 +1,552 @@
-  
-
-const forwardbutton = document.getElementById("forwardbutton");
-        const audioElement = document.getElementById('audioElement');
-        const hoverSfx = document.getElementById('hoverSfx');
-        const clickSfx = document.getElementById('clickSfx');
-        const muteButton = document.getElementById('muteButton');
-        const interactiveElements = document.querySelectorAll('a, button,input');
-
-        // Ensure autoplay works
-        audioElement.addEventListener('canplaythrough', () => {
-            console.log('Audio is ready to play without buffering.');
-            audioElement.play();
-        });
-
-        // Handle cases where autoplay might be blocked
-        document.addEventListener('click', () => {
-            if (audioElement.paused) {
-                audioElement.play();
-            }
-        });
-
-        // Mute Button Toggle
-        muteButton.addEventListener('click', () => {
-            if (audioElement.muted) {
-                audioElement.muted = false;
-                muteButton.textContent = 'Mute';
-            } else {
-                audioElement.muted = true;
-                muteButton.textContent = 'Unmute';
-            }
-        });
-
-        // Add hover and click sound effects
-        interactiveElements.forEach(element => {
-            element.addEventListener('mouseenter', () => {
-                hoverSfx.currentTime = 0;
-                hoverSfx.play();
-            });
-
-            element.addEventListener('click', () => {
-                clickSfx.currentTime = 0;
-                clickSfx.play();
-            });
-        });
-
-    const words = [
-    { word: 'malubha', hint: 'Hint: Mabigat kaysa karaniwan, tulad ng isang karamdaman.\n \n _ _ _ _ _ _ _   ang kasayahan ni Don Pedro noong nakita niya ang Piedras Platas' },
-    { word: 'panaginip', hint: 'Hint: Serye ng mga guniguning senaryo na nakikíta \n sa oras ng mahimbing na pagtulog.\n \n _ _ _ _ _ _ _ _ _  ng hari ay pinapakita na mahahamak si don juan' },
-    { word: 'nakatalos', hint: 'Hint: Pagkakaroon ng kakayahan at kaalaman upang lubos \n na maunawaan ang diwa o kahulugan ng isang bagay o ideya.\n \n Hindi  _ _ _ _ _ _ _ _ _  si don pedro noong tinatak siya ng ibong adarna' },
-        { word: 'bantog', hint: 'Hint: Kilalá sa lahat ng dáko, karaniwang dahil sa magandang nagawa.\n \n _ _ _ _ _ _  si Don juan bilang ang mabait at magiliw na batang kaluluwa' },
-        { word: 'maselan', hint: 'Hint: Malubhang kalagayan.\n \n _ _ _ _ _ _ _ ang kondisyon ni haring fernando' },
-        { word: 'lunas', hint: 'Hint: Medesina, anumang bagay na nagpapagaling sa may sakit.\n \n Ang kanta ng ibong adarna ay ang  _ _ _ _ _  para kay haring fernando' },
-        { word: 'ginhawa', hint: 'Hint:Kasiya-siyang pakiramdam ng tao dahil sa preskong panahon,\n paggalíng mula sa sakít, pagkalutas ng suliranin, pagkamit ng nais, at katulad.\n \n Nakaka-  _ _ _ _ _ _ _  nang malaman ni Haring Fernando na hindi bumalik si Don pedro' },
-        { word: 'utusan', hint: 'Hint: Ang pagbibigay ng tagubilin o kautusan sa isang tao para \n gawin o hindi gawin ang isang bagay.\n \n Na  _ _ _ _ _ _ _  siya ng kaniyang magulang na maglinis ng pingan' }
-    ];
-    
-    let currentWordIndex = 0;
-    let selectedWord = words[currentWordIndex].word;
-    let currentHint = words[currentWordIndex].hint;
-    let correctLetters = [];
-    let wrongLetters = [];
-    let attemptsLeft = 6; // Number of attempts
-    let horsePosition = 0;
-    const horseStep = 20; // How much the horse moves with each correct guess
-    const raceFinishLine = 1590; // The position of the finish line
-    
-    const wordEl = document.getElementById('word');
-    const wrongLettersEl = document.getElementById('wrong-letters');
-    const remainingAttemptsEl = document.getElementById('remaining-attempts');
-    const messageEl = document.getElementById('message');
-    const letterInput = document.getElementById('letter-input');
-    const guessBtn = document.getElementById('guess-btn');
-    const restartBtn = document.getElementById('restart-btn');
-    const horseEl = document.getElementById('horse');
-    const hintEl = document.getElementById('hint');
-    
-    letterInput.addEventListener('keydown', () => {
-            clickSfx.currentTime = 0; // Reset playback to the beginning
-            clickSfx.play();
-
-    })
-    function displayWord() {
-        wordEl.innerHTML = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
-    
-        // Check if the word has been completely guessed
-        if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
-            guessBtn.disabled = true; // Disable guessing button
-            messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`; // Show success message
-            restartBtn.style.display = 'inline'; // Show next word button
-        }
-    }
-    
-    function updateWrongLetters() {
-        wrongLettersEl.innerHTML = `Maling letra: ${wrongLetters.join(', ')}`;
-        remainingAttemptsEl.innerText = attemptsLeft;
-    
-        if (attemptsLeft <= 0) {
-            messageEl.innerText = `Game over! Ang tamang salita ay: ${selectedWord}`;
-            guessBtn.disabled = true; // Disable guessing button
-            restartBtn.style.display = 'inline'; // Show next word button
-        }
-    }
-    
-    function moveHorse() {
-        horsePosition += horseStep;
-        horseEl.style.left = horsePosition + 'px';
-        
-        // Check if the horse has reached or passed the finish line
-        const horseWidth = parseInt(getComputedStyle(horseEl).width);
-        if (horsePosition >= raceFinishLine - horseWidth) {
-            horsePosition = raceFinishLine - horseWidth; // Adjust to not go past the finish line
-            horseEl.style.left = horsePosition + 'px'; // Snap to finish line
-            guessBtn.disabled = true; // Disable guessing button
-            restartBtn.style.display = 'inline'; // Show next word button
-        }
-    }
-    
-    guessBtn.addEventListener('click', () => {
-        const letter = letterInput.value.toLowerCase();
-        letterInput.value = '';
-    
-        if (letter && !correctLetters.includes(letter) && !wrongLetters.includes(letter)) {
-            if (selectedWord.includes(letter)) {
-                correctLetters.push(letter);
-                moveHorse(); // Move the horse on correct guess
-            } else {
-                wrongLetters.push(letter);
-                attemptsLeft--;
-                updateWrongLetters();
-            }
-    
-            displayWord();
-        }
-    });
-    
-    restartBtn.addEventListener('click', () => {
-        currentWordIndex++;
-        if (currentWordIndex < words.length) {
-            selectedWord = words[currentWordIndex].word;
-            currentHint = words[currentWordIndex].hint;
-            correctLetters = [];
-            wrongLetters = [];
-            attemptsLeft = 6; // Reset attempts for the new word
-            messageEl.innerText = '';
-            hintEl.innerText = currentHint; // Update the hint for the new word
-            guessBtn.disabled = false; // Enable guessing button
-            restartBtn.style.display = 'none'; // Hide next word button
-            displayWord();
-            updateWrongLetters();
-        } else {
-            // Show the modal when all words are completed
-            modal.style.display = 'flex';
-        }
-    });
-    
-    // Add event listener for Enter key to activate the guess button
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            if (!guessBtn.disabled) {
-                guessBtn.click(); // Trigger the guess button click
-            }
-        }
-    });
-    function goToNextPage() {
-        window.location.href = 'ACT4.html'; // Change to your target HTML file
-    }
-    // Initialize the game
-    hintEl.innerText = currentHint; // Show the hint for the first word
-    displayWord();
-    updateWrongLetters();
-    
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
+     <title>Pangalawang Lakbay</title>
+     <style>
+ 
+ 
+ 
+     @media screen and (orientation: landscape) {
+ 
+ 
+     .hyper-start-3 {
+   position: absolute;
+   padding: 20px;
+   left: 12%;
+   bottom: 87.5%;
+   color: #9A7B4F;
+ }
+ .mute-button {
+         top: 14%;
+         left: 10%;
+         position: absolute;
+         z-index: 5;
+           padding: 10px 20px;
+           font-family: genshin;
+           font-size: 20px;
+   color: #ffffff;
+   background-color: #45284a;
+   border: 2px solid #7d4f9a;
+   border-radius: 5px;
+   cursor: pointer;
+   text-shadow: 1px 1px 0 #8e4f9a;
+ }
+ 
+ 
+ 
+     body {
+         font-family: dialogue;
+                 display: flex;
+                 align-items: center;
+                 overflow: scroll;
+                 justify-content: center;
+     background-color:#7a79b7;
+     }
+ 
+     .container {
+         position: absolute;
+         top: 15%;
+         width: 1450px;
+         height: 780px ;
+              background: #efd4ff;
+              display: flex;
+                     padding: 60px 40px;
+                     border-radius: 10px;
+                     align-items: center;
+                     justify-content: center;
+     }
+ 
+     #hangman {
+         width: 1900px;
+                 height: 340px;
+                 position: relative;
+                 margin: 20px auto;
+     }
+ 
+     #word {
+         position: absolute;
+                 top: 47%;
+                 font-size: 54px;
+                 letter-spacing: 3px;
+                 margin: 20px 0;
+                 text-align: center;
+         color:#551157;
+     }
+ 
+     #wrong-letters {
+         position: absolute;
+         top:70%;
+         color:#521157;
+         text-align: center;
+         font-size: 37px;
+     }
+ 
+     #race {
+         bottom:45%;
+                 margin: 20px 0;
+                 position: absolute;
+                 width: 1200px;
+                 height: 30px;
+ 
+                overflow: visible;
+             z-index:1;
+          background-color: #2d1b0a;
+ 
+ 
+     }
+ 
+     #horse {
+                width: 400px; 
+         height: 300px; 
+         background-image: url('art/dondieg.png'); 
+         background-size: contain; 
+         background-repeat: no-repeat; 
+         background-position: center; 
+         position: absolute;
+      bottom: -190%;
+         transition: left 0.5s ease; 
+         z-index:6;
+     }
+ 
+     #finish-line {
+         width: 5px;
+         height: 2%;
+         background-color: rgb(255, 0, 0); 
+         position: absolute;
+         right: 0;
+         z-index:1;
+     }
+     #attempts{
+         position: absolute;
+                 top: 75%;
+                 text-align: center;
+                 font-size: 34px;
+          color:#521157;
+     }
+     #letter-input{
+         position: absolute;
+         top: 85%;
+         left: 30%;
+         text-align: center;
+         width: 350px;
+         height: 100px;
+         font-size: 30px;
+         font-family: genshin;
+         color: #521157;
+            background-color:#fdddbe;
+     }
+     #guess-btn{
+         position: absolute;
+                 top: 85%;
+                 right:29%;
+                 text-align: center;
+                 width: 250px;
+                 height: 105.8px;
+                 font-size: 30px;
+                 font-family: dialogue;
+         color: #521157;
+            background-color:#e2befd;
+     }
+     #restart-btn{
+         position: absolute;
+                 top: 85%;
+                 left:72%;
+                 text-align: center;
+                 width: 250px;
+                 height: 105px;
+                 font-size: 30px;
+                 font-family: dialogue;
+         color: #521157;
+            background-color:#f4e5ff;
+     }
+     #message {
+         margin-top: 20px;
+                 position: absolute;
+                 top: 20%;
+                 font-size: 54px;
+                 letter-spacing: 3px;
+                 text-align: center;
+       color:#521157;
+ 
+     }
+     ::placeholder{
+      color: #521157;
+     }
+ 
+     @font-face {
+         font-family:genshin;
+         src: url(zh-cn.ttf);
+     }
+     @font-face {
+         font-family:dialogue;
+         src: url(CookieRunRegular.otf);
+     }
+     /* Add this CSS to style your modal */
+ 
+     .modal {
+         display: flex;
+         position: fixed;
+         z-index: 1;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         background:   #693a0e;
+         background-color: rgba(0,0,0,0.4);
+         justify-content: center;
+         align-items: center;
+         overflow: hidden;
+     }
+ 
+     .modal-content {
+         border-radius: 1%;
+         overflow: hidden;
+         background-color: #f3d6ff;
+         margin: 15% auto;
+         padding: 20px;
+         border: 5px solid #210a2d;
+         height: 600px;
+         width: 1200px;
+ 
+     }
+ 
+     .modal h2{
+         z-index: 1;
+                 position: absolute;
+                 top: 15%;
+                 left: 39%;
+                 font-size: 60px;
+         color: #280a2d;
+     }
+     .modal p{
+         z-index: 1;
+                 top: 28%;
+                 left: 35%;
+                 position: absolute;
+                 font-size: 20px;
+          color:#6c1fa3  ;
+     }
+     .modal button{
+         position: absolute;
+                 top: 70%;
+                 left: 43%;
+                 padding: 25px 42px;
+                 text-align: center;
+                 text-decoration: none;
+                 border-radius: 3px ;
+                font-size:25px ;
+                font-family: dialogue;
+         background-color: #fdd6a6;
+        color:#7b1fa3  ;
+     }
+     #hint{
+         position: absolute;
+         bottom: 35%;
+     }
+ 
+     .potrait {
+             display: none;
+         }
+ 
+     }
+ 
+     @media screen and (orientation: portrait) {
+             .container {
+                 display: none;
+             }
+             .potrait {
+             display: flex;
+         }
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     </style>
+ </head>
+ <body>
+     <img class="potrait" src="art/potrait.webp" alt="Landscape only!" style="
+     position: absolute;
+     padding: 20px;
+     left: 15%;
+     bottom: 40.5%;
+     ">
+ 
+     <audio id="audioElement" autoplay loop>
+         <source src="mus/PNG LAKBAY.mp3" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+ 
+     <!-- Sound Effects -->
+     <audio id="clickSfx">
+         <source src="sfx/nxt.wav" type="audio/mpeg">
+         Your browser does not support the audio element.
+     </audio>
+ 
+ 
+       </div>
+     </div>
+     <div class="container">
+                   <button id="muteButton" class="mute-button">Mute</button>
+         <div id="hint" style="font-size: 24px; margin-top: 20px; text-align: center;">
+         </div>
+ 
+         <div id="race" style="
+            background-color:#521157;">
+          <div id="horse" class="horse"></div>
+          <img src="art/hangmanbgdndig.png" style="z-index:-2; position:relative; bottom: 900%;" width="100%" height="900%">
+             <div id="race-track">
+                 <div id="finish-line"></div>
+             </div>
+         </div>
+         <div id="word" style="z-index:5; color: #000000;text-shadow:
+         3px 3px 0 #ffffff,
+         -3px 3px 0 #ffffff,
+         -3px -3px 0 #ffffff,
+         3px -3px 0 #ffffff;"></div>
+         <div id="wrong-letters"></div>
+         <div id="attempts">Natitirang tangkain: <span id="remaining-attempts">6</span></div>
+ 
+ 
+         <input style="        color: #521157;
+            background-color:#e2befd;" type="text" id="letter-input" maxlength="1" placeholder="Maghula ng letra" autocomplete="off" />
+         <button id="guess-btn" sty>Ihula</button>
+         <button id="restart-btn" style="display: none;        color: #521157;
+            background-color:#e2befd;">Sumunod na salita</button>
+         <p id="message" style="z-index:5;  color: #fff;text-shadow:
+     3px 3px 0 #000,
+     -3px 3px 0 #000,
+     -3px -3px 0 #000,
+     3px -3px 0 #000;"></p>
+     </div>
+ <div id="modal" class="modal" style="display: none;  z-index:8;">
+ <div class="modal-content">
+ <div style="left:50% ;">
+ <h2 style="
+ position: absolute;
+ top: 15%;
+ left: 33.5%;
+ border-bottom: hidden;
+ font-size: 120px;
+ ">MAHUSAY!</h2>
+     <br> <br>
+ <p style="
+ 
+ position: absolute;
+     top: 30%;
+     left: 23.5%;
+     font-size: 80px;
+     
+     ">Natapos mo ang mga salita</p>
+ <center><button onclick="goToNextPage()" style="position: absolute;
+   
+     
+ <h2 style="position: absolute;top: -5%;left: 25.5%;border-bottom: hidden;font-size: 120px;">MAHUSAY!</h2>
+     <br> <br>
+ <p style="position: absolute;top: 25%;left: 23.5%;font-size: 50px;">Natapos mo ang mga salita</p>
+ <center><button onclick="goToNextPage()" style="
+   position: absolute;
+     top: 52%;
+     left: 41%;
+     padding: 25px 42px;
+     text-align: center;
+     text-decoration: none;
+     border-radius: 3px;
+     font-size: 25px;
+     color: #521157;
+     background-color: #e2befd;
+ 
+   position: absolute;
+   top: 52%;
+   left: 37%;
+   padding: 25px 42px;
+   text-align: center;
+   text-decoration: none;
+   border-radius: 3px;
+   font-size: 25px;
+   color: #521157;
+   background-color: #e2befd;
+ ">Sumunod na pahina</button></center>
+        </div>
+     </div>
+     </div>
+ 
+     <script>  
+ 
+ const forwardbutton = document.getElementById("forwardbutton");
+         const audioElement = document.getElementById('audioElement');
+         const hoverSfx = document.getElementById('hoverSfx');
+         const clickSfx = document.getElementById('clickSfx');
+         const muteButton = document.getElementById('muteButton');
+         const interactiveElements = document.querySelectorAll('a, button,input');
+ 
+         // Ensure autoplay works
+         audioElement.addEventListener('canplaythrough', () => {
+             console.log('Audio is ready to play without buffering.');
+             audioElement.play();
+         });
+ 
+         // Handle cases where autoplay might be blocked
+         document.addEventListener('click', () => {
+             if (audioElement.paused) {
+                 audioElement.play();
+             }
+         });
+ 
+         // Mute Button Toggle
+         muteButton.addEventListener('click', () => {
+             if (audioElement.muted) {
+                 audioElement.muted = false;
+                 muteButton.textContent = 'Mute';
+             } else {
+                 audioElement.muted = true;
+                 muteButton.textContent = 'Unmute';
+             }
+         });
+ 
+         // Add hover and click sound effects
+         interactiveElements.forEach(element => {
+             element.addEventListener('mouseenter', () => {
+                 hoverSfx.currentTime = 0;
+                 hoverSfx.play();
+             });
+ 
+             element.addEventListener('click', () => {
+                 clickSfx.currentTime = 0;
+                 clickSfx.play();
+             });
+         });
+ 
+     const words = [
+     { word: 'malubha', hint: 'Hint: Mabigat kaysa karaniwan, tulad ng isang karamdaman.' },
+     { word: 'panaginip', hint: 'Hint: Serye ng mga guniguning senaryo na nakikíta \n sa oras ng mahimbing na pagtulog.' },
+     { word: 'nakatalos', hint: 'Hint: Pagkakaroon ng kakayahan at kaalaman upang lubos \n na maunawaan ang diwa o kahulugan ng isang bagay o ideya.' },
+         { word: 'bantog', hint: 'Hint: Kilalá sa lahat ng dáko, karaniwang dahil sa magandang nagawa.' },
+         { word: 'maselan', hint: 'Hint: Malubhang kalagayan.' },
+         { word: 'lunas', hint: 'Hint: Medesina, anumang bagay na nagpapagaling sa may sakit.' },
+         { word: 'ginhawa', hint: 'Hint:Kasiya-siyang pakiramdam ng tao dahil sa preskong panahon,\n paggalíng mula sa sakít, pagkalutas ng suliranin, pagkamit ng nais, at katulad.' },
+         { word: 'utusan', hint: 'Hint: Ang pagbibigay ng tagubilin o kautusan sa isang tao para \n gawin o hindi gawin ang isang bagay.' }
+     ];
+ 
+     let currentWordIndex = 0;
+     let selectedWord = words[currentWordIndex].word;
+     let currentHint = words[currentWordIndex].hint;
+     let correctLetters = [];
+     let wrongLetters = [];
+     let attemptsLeft = 6; // Number of attempts
+     let horsePosition = 0;
+     const horseStep = 20; // How much the horse moves with each correct guess
+     const raceFinishLine = 1590; // The position of the finish line
+ 
+     const wordEl = document.getElementById('word');
+     const wrongLettersEl = document.getElementById('wrong-letters');
+     const remainingAttemptsEl = document.getElementById('remaining-attempts');
+     const messageEl = document.getElementById('message');
+     const letterInput = document.getElementById('letter-input');
+     const guessBtn = document.getElementById('guess-btn');
+     const restartBtn = document.getElementById('restart-btn');
+     const horseEl = document.getElementById('horse');
+     const hintEl = document.getElementById('hint');
+ 
+     letterInput.addEventListener('keydown', () => {
+             clickSfx.currentTime = 0; // Reset playback to the beginning
+             clickSfx.play();
+ 
+     })
+     function displayWord() {
+         wordEl.innerHTML = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
+ 
+         // Check if the word has been completely guessed
+         if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
+             guessBtn.disabled = true; // Disable guessing button
+             messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`; // Show success message
+             restartBtn.style.display = 'inline'; // Show next word button
+         }
+     }
+ 
+     function updateWrongLetters() {
+         wrongLettersEl.innerHTML = `Maling letra: ${wrongLetters.join(', ')}`;
+         remainingAttemptsEl.innerText = attemptsLeft;
+ 
+         if (attemptsLeft <= 0) {
+             messageEl.innerText = `Game over! Ang tamang salita ay: ${selectedWord}`;
+             guessBtn.disabled = true; // Disable guessing button
+             restartBtn.style.display = 'inline'; // Show next word button
+         }
+     }
+ 
+     function moveHorse() {
+         horsePosition += horseStep;
+         horseEl.style.left = horsePosition + 'px';
+ 
+         // Check if the horse has reached or passed the finish line
+         const horseWidth = parseInt(getComputedStyle(horseEl).width);
+         if (horsePosition >= raceFinishLine - horseWidth) {
+             horsePosition = raceFinishLine - horseWidth; // Adjust to not go past the finish line
+             horseEl.style.left = horsePosition + 'px'; // Snap to finish line
+             guessBtn.disabled = true; // Disable guessing button
+             restartBtn.style.display = 'inline'; // Show next word button
+         }
+     }
+ 
+     guessBtn.addEventListener('click', () => {
+         const letter = letterInput.value.toLowerCase();
+         letterInput.value = '';
+ 
+         if (letter && !correctLetters.includes(letter) && !wrongLetters.includes(letter)) {
+             if (selectedWord.includes(letter)) {
+                 correctLetters.push(letter);
+                 moveHorse(); // Move the horse on correct guess
+             } else {
+                 wrongLetters.push(letter);
+                 attemptsLeft--;
+                 updateWrongLetters();
+             }
+ 
+             displayWord();
+         }
+     });
+ 
+     restartBtn.addEventListener('click', () => {
+         currentWordIndex++;
+         if (currentWordIndex < words.length) {
+             selectedWord = words[currentWordIndex].word;
+             currentHint = words[currentWordIndex].hint;
+             correctLetters = [];
+             wrongLetters = [];
+             attemptsLeft = 6; // Reset attempts for the new word
+             messageEl.innerText = '';
+             hintEl.innerText = currentHint; // Update the hint for the new word
+             guessBtn.disabled = false; // Enable guessing button
+             restartBtn.style.display = 'none'; // Hide next word button
+             displayWord();
+             updateWrongLetters();
+         } else {
+             // Show the modal when all words are completed
+             modal.style.display = 'flex';
+         }
+     });
+ 
+     // Add event listener for Enter key to activate the guess button
+     document.addEventListener('keydown', (event) => {
+         if (event.key === 'Enter') {
+             if (!guessBtn.disabled) {
+                 guessBtn.click(); // Trigger the guess button click
+             }
+         }
+     });
+     function goToNextPage() {
+         window.location.href = 'ACT4.html'; // Change to your target HTML file
+     }
+     // Initialize the game
+     hintEl.innerText = currentHint; // Show the hint for the first word
+     displayWord();
+     updateWrongLetters();
+     </script>
+ </body>
+ </html>
