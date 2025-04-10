@@ -52,7 +52,7 @@
     
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
     @media screen and (orientation: landscape) {
-            .potrait {
+  .potrait {
                 display: none;
             }
 
@@ -275,14 +275,28 @@ position: absolute;
     }
         
     @media screen and (orientation: portrait) {
-            .container {
-                display: none;
-            }
-            .potrait {
-            display: flex;
-        }
-}   
-        
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #9a4040;
+        overflow: hidden;
+    }
+
+    .container {
+        display: none;
+    }
+
+    .potrait {
+        display: block;
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+        margin: auto;
+    }
+}
         
         
         
