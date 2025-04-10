@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Ang Lakbay</title>
     <style>
+
         @media screen and (orientation: landscape) {
-
-
- 
-        
-        
+            
             button{
-        
+
         background-color: #ffcaca;
         color: #2d0a0a;
         
@@ -61,10 +58,10 @@
             #wrong-letters {
         position: absolute;
         top: 63%;
-        color: #571111;
         text-align: center;
         font-size: 37px;
-            }
+          color: #571111;        
+          }
             
             #race {
  
@@ -234,6 +231,7 @@ z-index: 1;
             }
             
             
+            
             .hyper-start-3 {
           position: absolute;
           padding: 20px;
@@ -260,15 +258,23 @@ z-index: 1;
         .potrait {
             display: none;
         }
-
-
-            }
         
         @media screen and (orientation: portrait) {
+            body {
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
+            overflow: hidden;
+        }
             .container {
                 display: none;
             }
-            .potrait {
+            .potrait { 
+                           display: flex;
+            align-items: center;
+            min-height: 100vh;
+            justify-content: center;
             display: flex;
         }
 }
@@ -276,10 +282,7 @@ z-index: 1;
         </style>
 </head>
 <body>
-<img class="potrait" src="art/potrait.webp" alt="Landscape only!" style="            
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;">
+<img class="potrait" src="art/potrait.webp" alt="Landscape only!">
 
     <audio id="audioElement" autoplay loop>
         <source src="mus/UNANG LKBAY.mp3" type="audio/mpeg">
@@ -326,33 +329,34 @@ z-index: 1;
 <div id="modal" class="modal" style="display: none;  z-index:8;">
     <div class="modal-content">
 <div style="left:50% ;">
-<h2 style="
-<h2 style="
-        z-index: 1;
-        position: absolute;
-        top: -15%;
-        left: 25%;
-        font-size: 150px;
-        color: #2d0a0a;">MAHUSAY!</h2>
+    <h2 style="
+    z-index: 1;
+    position: absolute;
+    top: 20%;
+    left: 38%;
+    font-size: 150px;
+    color: #2d0a0a;
+    ">MAHUSAY!</h2>
     <br> <br>
-<p style="
+    <p style="
     position: fixed;
-    left: 25%;
+    left: 36%;
     font-size: 70px;
-    top: 40%;}">Natapos mo ang mga salita</p>
+    top: 40%;
+    ">Natapos mo ang mga salita</p>
 <center>
-<button onclick="goToNextPage()" style="
-  position: fixed;
-  top: 70%;
-  left: 40%;
-  padding: 25px 42px;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 3px;
-  font-size: 25px;
-  color: #a31f1f;
-  background-color: #ffffff;
-">Sumunod na pahina</button></center>
+    <button onclick="goToNextPage()" style="
+    position: fixed;
+    top: 55%;
+    left: 45%;
+    padding: 25px 42px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 25px;
+    color: #a31f1f;
+    background-color: #ffffff;
+  ">Sumunod na pahina</button></center>
                </div>
             
     </div>
