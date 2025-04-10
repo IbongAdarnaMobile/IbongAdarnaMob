@@ -7,7 +7,20 @@
     <style>
 
         @media screen and (orientation: landscape) {
-            
+            @keyframes popFade {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -70%) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100%) scale(0.8);
+    }
+}
+
             button{
 
         background-color: #ffcaca;
@@ -284,17 +297,49 @@ z-index: 1;
 <body>
 <img class="potrait" src="art/potrait.webp" alt="Landscape only!">
 
+
     <audio id="audioElement" autoplay loop>
         <source src="mus/UNANG LKBAY.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     
     <!-- Sound Effects -->
+     <audio id="correctSfx">
+    <source src="sfx/win.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
     <audio id="clickSfx">
         <source src="sfx/nxt.wav" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
     <div class="container">
+        <div id="score-display" style="
+        z-index: 3;
+        position: absolute;
+        top: 5%;
+        left: 80%;
+        font-size: 30px;
+        color: #2d0a0a;
+        text-shadow: 3px 3px 0 #ffffff, -3px 3px 0 #ffffff, -3px -3px 0 #ffffff, 3px -3px 0 #ffffff;">
+            Iskor: <span id="score">0</span>
+        </div>
+        <div id="plus-ten" style="
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    font-family: dialogue;
+    font-weight: bold;
+    color: #fce3e3;
+    text-shadow: 2px 2px 5px #000;
+    z-index: 9999;
+    pointer-events: none;
+">
+    +10
+</div>
+
         <div class="hyper-start-3">    
             <button id="muteButton" class="mute-button">Mute</button>
         </div>
@@ -344,6 +389,13 @@ z-index: 1;
     font-size: 70px;
     top: 40%;
     ">Natapos mo ang mga salita</p>
+    <p id="final-score-text" style="
+    position: fixed;
+    left: 40%;
+    font-size: 50px;
+    top: 50%;
+    color: #2d0a0a;">
+</p>
 <center>
     <button onclick="goToNextPage()" style="
     position: fixed;
@@ -417,7 +469,7 @@ const words = [
     { word: 'tatwa', hint: 'Hint: Ang pagtanggi o hindi pagtanggap sa isang bagay, kahilingan, panukala,\n o alok; kilos ng hindi pagsang-ayon.\n \n Itina-_ _ _ _ _ ni don pedro si haring fernando' }
     
 ];
-    
+    let score = 0;
     let currentWordIndex = 0;
     let selectedWord = words[currentWordIndex].word;
     let currentHint = words[currentWordIndex].hint;
@@ -427,7 +479,11 @@ const words = [
     let horsePosition = 0;
     const horseStep = 20; // How much the horse moves with each correct guess
     const raceFinishLine = 1590; // The position of the finish line
-    
+
+    const scoreEl = document.getElementById('score');
+    const correctSfx = document.getElementById('correctSfx');
+
+
     const wordEl = document.getElementById('word');
     const wrongLettersEl = document.getElementById('wrong-letters');
     const remainingAttemptsEl = document.getElementById('remaining-attempts');
@@ -438,6 +494,19 @@ const words = [
     const horseEl = document.getElementById('horse');
     const hintEl = document.getElementById('hint');
     
+    //strt of ten
+    function showPlusTen() {
+    const plusTenEl = document.getElementById('plus-ten');
+    plusTenEl.style.display = 'block';
+    plusTenEl.style.animation = 'popFade 1s ease-out';
+
+    // After animation ends, hide the element and remove animation
+    plusTenEl.addEventListener('animationend', () => {
+        plusTenEl.style.display = 'none';
+        plusTenEl.style.animation = '';
+    }, { once: true });
+}
+
     letterInput.addEventListener('keydown', () => {
             clickSfx.currentTime = 0; // Reset playback to the beginning
             clickSfx.play();
@@ -446,13 +515,32 @@ const words = [
     function displayWord() {
         wordEl.innerHTML = selectedWord.split('').map(letter => (correctLetters.includes(letter) ? letter : '_')).join(' ');
     
+        if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
+    guessBtn.disabled = true;
+    messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`;
+    restartBtn.style.display = 'inline';
+
+//add yummy score in my yummy tummy
+    score += 10;
+    scoreEl.innerText = score;
+    showPlusTen();
+
+    correctSfx.currentTime = 0;
+correctSfx.play();
+
+}
+
         // Check if the word has been completely guessed
         if (wordEl.innerText.replace(/\s/g, '') === selectedWord) {
             guessBtn.disabled = true; // Disable guessing button
             messageEl.innerText = `Mahusay! Nahulaan mo ang salitang: ${selectedWord}`; // Show success message
-            restartBtn.style.display = 'inline'; // Show next word button
+            const finalScoreText = document.getElementById('final-score-text');
+finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
+
+            restartBtn.style.display = 'flex'; // Show next word button
         }
     }
+    //end 
     
     function updateWrongLetters() {
         wrongLettersEl.innerHTML = `Maling letra: ${wrongLetters.join(', ')}`;
