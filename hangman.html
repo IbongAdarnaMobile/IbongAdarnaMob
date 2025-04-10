@@ -273,24 +273,28 @@ z-index: 1;
         }
         
         @media screen and (orientation: portrait) {
-            body {
-            display: flex;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            overflow: hidden;
-        }
-            .container {
-                display: none;
-            }
-            .potrait { 
-                           display: flex;
-            align-items: center;
-            min-height: 100vh;
-            justify-content: center;
-            display: flex;
-        }
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #9a4040; /* optional background */
+        overflow: hidden;
+    }
+
+    .container {
+        display: none;
+    }
+
+    .potrait {
+        display: block;
+        max-width: 90vw;
+        max-height: 90vh;
+        object-fit: contain;
+    }
 }
+
         
         </style>
 </head>
@@ -630,4 +634,3 @@ finalScoreText.innerText = `Kabuuang Iskor: ${score} / ${totalScore}`;
     </script>
 </body>
 </html>
-
