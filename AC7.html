@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
-        <meta name="viewport" content="width=device-width, intitial-scale=0.4 maximum-scale=0.5, user-scalable=no">
+        <meta name="viewport" content="width=device-width, maximum-scale=0.5, user-scalable=no">
     
     <script>   document.addEventListener("DOMContentLoaded", function(){      
     const audioElement = document.getElementById('audioElement');
@@ -57,6 +57,12 @@
     <meta charset="UTF-8">
     <style>
                @media screen and (orientation: landscape) {
+                .background-rect {
+            position: absolute;
+            top: -2%;
+            left: -1%;
+            z-index: -1; /* Puts it behind the image */
+        }
             .potrait {
                 display: none;
             }
@@ -70,15 +76,13 @@
         }
 
         .container {
-            z-index: 0;
-            width: 1450px;
-    height: 570px;
-        background: white;
-        display: flex;
-        padding: 60px 40px;
-        border-radius: 10px;
-        align-items: absolute;
-        justify-content: absolute;
+            position: relative;
+            width: 110%;
+            max-width: 1350px;
+            margin: auto;
+            text-align: center;
+            height:120%;
+    max-height: 1350px;
 }
 
         .rectangle 
@@ -145,13 +149,18 @@
         }
 
         .resizedTextbox {
-            bottom: 10%;
-            width: 700px;
-            height: 100px;
-            font-size: 60px;
-            border-style: solid;
-            border-width: 20px;
-            border-color: #d9c7be;
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 15px;
+            margin: auto;
+            font-size: 1.5rem;
+            border-radius: 10px;
+            position: absolute;
+            bottom: 5%;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         /* Modal styles */
@@ -198,11 +207,10 @@
             color: red;
         }
         #dialogueImage {
-    z-index: 1;
-    position: absolute;
-    left: 50px;
-    top: 4%;
-        }
+            width: 100%;
+            height: auto;
+}
+
         @font-face {
             font-family: genshin;
             src: url(zh-cn.ttf);
@@ -212,17 +220,22 @@
             font-family: dialogue;
             src: url(CookieRunRegular.otf);
         }
-        #myModal{
-            position: absolute; 
-            top: 15%;
-             left: 20%; 
-             width: 60%; 
-             height: 70%; 
-              background:rgb(255, 247, 240); 
-              border: solid; 
-              border-width: 100%;
-               border-color: #6f3000;
-        }
+        #myModal {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50vw;
+    max-width: 600px;
+    height: auto;
+    padding: 30px 20px;
+    background: rgb(255, 247, 240);
+    border: 8px solid #6f3000;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
        #answerInput{
             font-family: dialogue;
             text-align: center;
@@ -230,27 +243,12 @@
                }
 
                     @media screen and (orientation: portrait) {
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #9a4040;
-        overflow: hidden;
-    }
-
-    .container, .modal {
-        display: none;
-    }
-
-    .potrait {
-        display: block;
-        max-width: 90vw;
-        max-height: 90vh;
-        object-fit: contain;
-        margin: auto;
-    }
+            .container, .modal {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
 }
             
     </style>
@@ -267,31 +265,32 @@
         <source src="sfx/nxt.wav" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-<div class="container">
-    <div style="  position: absolute;
-    padding: 20px;
-    z-index: 3;
-    left: 3%;
-    bottom: 85.5%;
-    color: #bd6920;">    
-        <button id="muteButton"style=" padding: 10px 20px;
-        font-family: genshin;
-        font-size: 20px;
-        color: #ffffff;
-        background-color:#0000006b;
-        border: 2px solid #9A7B4F;
-        border-radius: 5px;
-        cursor: pointer;
-        text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
+    <div class="container">
+        <div style="  position: absolute;
+        padding: 20px;
+        z-index: 1;
+        left: 3%;
+        bottom: 85.5%;
+        color: #bd6920;">    
+            <button id="muteButton" style=" padding: 10px 20px;
+            font-family: genshin;
+            font-size: 20px;
+            color: #ffffff;
+            background-color:#0000006b;
+            border: 2px solid #9A7B4F;
+            border-radius: 5px;
+            cursor: pointer;
+            text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
+        </div>
+        <div class="rectangle" style="z-index: 1; background-color: #4f0901bf;">
+            <p class="dialogue2" id="dialogueText">Nakapuwesto si Don Juan sa ilalim ng Piedras Platas. Hindi siya napagod sa pag-iintay kung kaya’t nasaksihan niya ang taglay na gilas at kariktan ng Ibong Adarna. Umawit ito at nagpalit na ang kulay ng kanyang mga balahibo.</p>
+            <button id="nextButton" class="forwardbutton"> &gt; </button> <!-- Button is placed outside the paragraph -->
+        </div>
+        <img id="dialogueImage" height="680" width="1520 " src="art/ACT7/1.3.png">
+        <svg class="background-rect" width="102%" height="108%" viewBox="0 0 1200 675" preserveAspectRatio="none">
+            <rect width="100%" height="120%" rx="20" ry="20" fill="#ffff9b"></rect>
+        </svg>
     </div>
-    <div class="rectangle" style="z-index: 2; background-color: #4f0901bf;">
-        <p class="dialogue2" id="dialogueText">
-            
-        </p>
-        <button id="nextButton" class="forwardbutton"> > </button> <!-- Button is placed outside the paragraph -->
-    </div>
-    <img id="dialogueImage"height="680" width="1520 " >
-</div>
 
 <!-- Modals -->
 <div id="myModal" class="modal">
