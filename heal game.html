@@ -46,7 +46,7 @@
         
       })</script>
     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width,maximum-scale=0.5, user-scalable=no">
+     <meta name="viewport" content="width=device-width,maximum-scale=0.4, user-scalable=no">
     <title>ACT 11</title>
     <style>
     
@@ -55,20 +55,24 @@
             .potrait {
                 display: none;
             }
+            .mute-container {
+    position: fixed;
+    top: 2.5vh;
+    left: 2vw;
+    z-index: 1000; /* above everything */
+}
 
 .mute-button {
-  padding: 10px 20px;
-  font-family: genshin;
-  font-size: 20px;
-  color: #ffffff;
-  background-color: #45284a;
-  border: 2px solid #7d4f9a;
-  border-radius: 5px;
-  cursor: pointer;
-  text-shadow: 1px 1px 0 #8e4f9a;
+    padding: clamp(0.4em, 1.5vw, 0.8em) clamp(1em, 3vw, 2em);
+    font-family: genshin;
+    font-size: clamp(14px, 2vw, 20px);
+    color: #ffffff;
+    background-color: #4A3728;
+    border: 2px solid #9A7B4F;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 #9A7B4F;
 }
-    
-    
         *{
             margin: 0;
             padding: 0;
@@ -298,7 +302,6 @@
 
 
     </style>
-    <meta name="viewport" content="width=device-width, intitial-scale=0.5 maximum-scale=1, user-scalable=no">
 </head>
 <body>
     <img class="potrait" src="art/potrait.webp" alt="Landscape please!">
@@ -311,23 +314,12 @@
     <audio id="clickSfx">
         <source src="sfx/nxt.wav" type="audio/mpeg">
         Your browser does not support the audio element.
-    </audio>
+    </audio>  
+    
+    <div class="mute-container">
+        <button id="muteButton" class="mute-button">Mute</button>
+    </div>
 <div class="container">
-    <div style=" position: absolute;
-    padding: 20px;
-    left: 15%;
-    bottom: 78.5%;
-    color: #9A7B4F;">    
- <button id="muteButton" style=" padding: 10px 20px;
- font-family: genshin;
- font-size: 20px;
- color: #ffffff;
- background-color: #4A3728;
- border: 2px solid #9A7B4F;
- border-radius: 5px;
- cursor: pointer;
- text-shadow: 1px 1px 0 #9A7B4F;">Mute</button>
-</div>
     <div id="backgroundImages" ></div>
     <div class="wrapper">
         <h1>Hulaan ang Salita</h1>
