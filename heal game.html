@@ -46,13 +46,13 @@
         
       })</script>
     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=0.4, maximum-scale=0.5, user-scalable=no">
+     <meta name="viewport" content="width=device-width,maximum-scale=0.5, user-scalable=no">
     <title>ACT 11</title>
     <style>
     
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
     @media screen and (orientation: landscape) {
-  .potrait {
+            .potrait {
                 display: none;
             }
 
@@ -83,15 +83,16 @@
             justify-content: center;
             background-color:#4A3728;
         }
-        .wrapper{
-            position: relative;
-            bottom: 0.5%;
-            left: 5%;
-            width: 430px;
-            background: #fffaf4;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
+        .wrapper {
+    width: 90%;
+    max-width: 450px;
+    background: #fffaf4;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 20px;
+    position: relative;
+}
+        
         .wrapper h1{
             font-family: genshin;
             font-size: 25px;
@@ -195,52 +196,41 @@
         }
 
         .modal-content {
-position: absolute;
-        top: -20%;
-        left: 10%;
-        border-radius: 1%;
-        overflow: hidden;
-        background-color: #fcebd4;
-        margin: 15% auto;
-        padding: 20px;
-        border: 5px solid #5f3c0e;
-        height: 260px;
-        width: 600px;
-        font-size: 10%;
+    position: relative;
+    background-color: #fcebd4;
+    border: 5px solid #5f3c0e;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    padding: 40px 20px;
+    text-align: center;
+    margin: auto;
+}
 
-        }
+.modal h2 {
+    font-family: genshin;
+    font-size: 2.5rem;
+    color: #56340a;
+    margin-bottom: 20px;
+}
 
-        .modal h2{
-        font-family: genshin;
-        z-index: 1;
-        position: absolute;
-        top: 10%;
-        left: 7%;
-        font-size: 90px;
-        color: #56340a;
-        }
-        .modal p{
-        font-family: dialogue;
-        z-index: 1;
-        top: 40%;
-        left: 19.5%;
-        position: absolute;
-        font-size: 30px;
-        color: #845213;
-        }
-        .modal button{
-position: absolute;
-        top: 60%;
-        left: 20%;
-        padding: 25px 42px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 3px;
-        font-size: 25px;
-        color: #f5ce9d;
-        font-family: dialogue;
-        background-color: #9b6e35;
-        }
+.modal p {
+    font-family: dialogue;
+    font-size: 1.2rem;
+    color: #845213;
+}
+
+.modal button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    font-family: dialogue;
+    background-color: #9b6e35;
+    color: #f5ce9d;
+    border: none;
+    cursor: pointer;
+}
 
         .container {
             width: 1450px;
@@ -261,42 +251,32 @@ position: absolute;
             src: url(CookieRunRegular.otf);
         }
         #backgroundImages {
-            position: static;
-            top:23.5%;
-            left:15%;
-            z-index: 1;
-            background-size: cover;
-            background-position: center;
-            width:40%;
-            height:60%;
+    position: relative;
+    top: 0vh;
+    left: 31%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 80vw; /* Responsive width */
+    max-width: 800px; /* Optional max width */
+    aspect-ratio: 16 / 9; /* Keeps aspect ratio consistent */
+    background-size: contain; /* or use "cover" if you want it to fill */
+    background-repeat: no-repeat;
+    background-position: center;
+
             background-image: url('art/AC11/hell/ACtxt1.png');
         }
 
     }
         
     @media screen and (orientation: portrait) {
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        margin: 0;
-        background-color: #9a4040;
-        overflow: hidden;
-    }
-
-    .container {
-        display: none;
-    }
-
-    .potrait {
-        display: block;
-        max-width: 90vw;
-        max-height: 90vh;
-        object-fit: contain;
-        margin: auto;
-    }
-}
+            .container {
+                display: none;
+            }
+            .potrait {
+            display: flex;
+        }
+}   
+        
         
         
         
