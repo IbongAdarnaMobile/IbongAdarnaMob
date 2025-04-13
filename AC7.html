@@ -242,19 +242,39 @@
        }
                }
 
-                    @media screen and (orientation: portrait) {
-            .container, .modal {
-                display: none;
-            }
-            .potrait {
-            display: flex;
-        }
+@media screen and (orientation: portrait) {
+    .container, .modal {
+        display: none;
+    }
+
+    .potrait {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: #a85c22;
+        z-index: 999; /* Make sure it's on top */
+    }
+
+    .potrait img {
+        max-width: 90%;
+        height: auto;
+        margin: auto;
+    }
 }
+
             
     </style>
 </head>
 <body>
-    <img class="potrait" src="art/potrait.webp" alt="gay">
+<div class="potrait">
+    <img src="art/potrait.webp" alt="Potrait">
+</div>
+
     <audio id="audioElement" autoplay loop>
         <source src="mus/07.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
