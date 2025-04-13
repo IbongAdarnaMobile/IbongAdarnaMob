@@ -272,14 +272,31 @@
 
     }
         
-    @media screen and (orientation: portrait) {
-            .container {
-                display: none;
-            }
-            .potrait {
-            display: flex;
-        }
-}   
+@media screen and (orientation: portrait) {
+    .container {
+        display: none;
+    }
+
+    .potrait {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #4A3728; /* Optional: match your theme */
+        z-index: 9999;
+    }
+
+    .potrait img {
+        max-width: 90%;
+        height: auto;
+        margin: auto;
+    }
+}
+
         
         
         
@@ -304,7 +321,10 @@
     </style>
 </head>
 <body>
-    <img class="potrait" src="art/potrait.webp" alt="Landscape please!">
+<div class="potrait">
+    <img src="art/potrait.webp" alt="Landscape please!">
+</div>
+
     <audio id="audioElement" autoplay loop>
         <source src="mus/heal.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
